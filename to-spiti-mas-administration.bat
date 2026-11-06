@@ -1,4 +1,4 @@
 @echo off
 cd /d "%~dp0"
-node admin.js
+node admin/server.js
 pause

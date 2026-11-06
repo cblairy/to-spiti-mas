@@ -1,0 +1,19 @@
+.legal {
+    margin-top: var(--header-height);
+}
+
+.legal h2 {
+    font-size: 2rem;
+    margin: 48px 0 14px;
+}
+
+.page-title {
+    font-size: clamp(2.6rem, 6vw, 4.2rem);
+}
+
+.credits {
+    margin-top: 12px;
+    padding-left: 18px;
+    color: var(--text-soft);
+    font-size: 0.92rem;
+}

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Administration – To Spiti Mas</title>
+<link rel="icon" href="/preview/assets/img/logo-tospitimas.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/admin.css">
+</head>
+
+<body>
+
+<header>
+    <div class="brand">
+        <img src="/preview/assets/img/logo-tospitimas.png" alt="">
+        <h1>Administration</h1>
+    </div>
+    <div class="actions">
+        <a class="button ghost" href="/preview/fr/contact.html#tarifs" target="_blank" rel="noopener" data-preview>Voir l'aperçu</a>
+        <button type="button" id="open-publish">Publier sur OVH</button>
+    </div>
+</header>
+
+<main>
+
+    <section>
+        <h2>Avant de publier</h2>
+        <ul class="checks" id="checks"></ul>
+        <div class="actions">
+            <button type="button" class="ghost" id="build-button">Générer le site</button>
+            <a class="button ghost" href="/preview/fr/" target="_blank" rel="noopener" data-preview>Ouvrir l'aperçu complet</a>
+            <a class="button ghost" id="live-link" href="#" target="_blank" rel="noopener" hidden>Ouvrir le site en ligne</a>
+        </div>
+        <p class="meta" id="build-meta"></p>
+        <ul class="problems" id="build-problems"></ul>
+    </section>
+
+    <form id="data-form" novalidate>
+
+        <section>
+            <h2>Site</h2>
+            <div class="grid">
+                <label data-field="site.url">Adresse du site<input type="url" placeholder="https://www.tospitimas.fr" spellcheck="false"><small>Sert à Google pour relier les 5 langues.</small><span class="field-error"></span></label>
+            </div>
+            <p class="spaced"><label class="checkbox" data-field="site.forceHttps"><input type="checkbox"> Forcer le HTTPS (cadenas)<span class="field-error"></span></label></p>
+            <p class="hint tight">Les visiteurs arrivent toujours sur l'adresse sécurisée. OVH fournit le certificat SSL gratuitement : vérifiez qu'il est actif avant la première publication (guide OVH, étape 1). Si le site ne s'ouvre plus après publication, décochez, enregistrez et republiez.</p>
+        </section>
+
+        <section>
+            <h2>Période de location</h2>
+            <p class="hint">Les dates en dehors de cette période ne pourront pas être choisies dans le formulaire de réservation du site.</p>
+            <div class="grid">
+                <label data-field="booking.open">Ouverture des réservations<input type="date"><span class="field-error"></span></label>
+                <label data-field="booking.close">Fermeture des réservations<input type="date"><span class="field-error"></span></label>
+            </div>
+        </section>
+
+        <section>
+            <h2>Tarifs</h2>
+            <p class="hint">Prix pour la maison entière, en euros. Les périodes de chaque saison se modifient dans les textes du site.</p>
+            <table>
+                <thead>
+                    <tr><th></th><th>Par nuit</th><th>Par semaine</th><th>Séjour minimum</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Basse saison</th>
+                        <td><label data-field="seasons.low.night"><span class="unit" data-unit="€"><input type="number" inputmode="numeric" min="0" step="1"></span><span class="field-error"></span></label></td>
+                        <td><label data-field="seasons.low.week"><span class="unit" data-unit="€"><input type="number" inputmode="numeric" min="0" step="1"></span><span class="field-error"></span></label></td>
+                        <td><label data-field="seasons.low.minNights"><span class="unit" data-unit="nuits"><input type="number" inputmode="numeric" min="1" step="1"></span><span class="field-error"></span></label></td>
+                    </tr>
+                    <tr>
+                        <th>Moyenne saison</th>
+                        <td><label data-field="seasons.mid.night"><span class="unit" data-unit="€"><input type="number" inputmode="numeric" min="0" step="1"></span><span class="field-error"></span></label></td>
+                        <td><label data-field="seasons.mid.week"><span class="unit" data-unit="€"><input type="number" inputmode="numeric" min="0" step="1"></span><span class="field-error"></span></label></td>
+                        <td><label data-field="seasons.mid.minNights"><span class="unit" data-unit="nuits"><input type="number" inputmode="numeric" min="1" step="1"></span><span class="field-error"></span></label></td>
+                    </tr>
+                    <tr>
+                        <th>Haute saison</th>
+                        <td><label data-field="seasons.high.night"><span class="unit" data-unit="€"><input type="number" inputmode="numeric" min="0" step="1"></span><span class="field-error"></span></label></td>
+                        <td><label data-field="seasons.high.week"><span class="unit" data-unit="€"><input type="number" inputmode="numeric" min="0" step="1"></span><span class="field-error"></span></label></td>
+                        <td><label data-field="seasons.high.minNights"><span class="unit" data-unit="nuits"><input type="number" inputmode="numeric" min="1" step="1"></span><span class="field-error"></span></label></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>Arrivée et départ</h2>
+            <div class="grid">
+                <label data-field="checkin">Arrivée à partir de<input type="time"><span class="field-error"></span></label>
+                <label data-field="checkout">Départ avant<input type="time"><span class="field-error"></span></label>
+            </div>
+        </section>
+
+        <section>
+            <h2>Paiement</h2>
+            <div class="grid">
+                <label data-field="payment.deposit">Acompte à la réservation<span class="unit" data-unit="%"><input type="number" inputmode="numeric" min="0" max="100" step="1"></span><span class="field-error"></span></label>
+                <label data-field="payment.balanceDaysBefore">Solde à payer<span class="unit" data-unit="jours"><input type="number" inputmode="numeric" min="0" step="1"></span><small>avant l'arrivée</small><span class="field-error"></span></label>
+                <label data-field="payment.securityDeposit">Caution<span class="unit" data-unit="€"><input type="number" inputmode="numeric" min="0" step="1"></span><span class="field-error"></span></label>
+                <label data-field="payment.securityDepositReturnDays">Caution rendue sous<span class="unit" data-unit="jours"><input type="number" inputmode="numeric" min="0" step="1"></span><span class="field-error"></span></label>
+                <label data-field="payment.freeCancellationDays">Annulation gratuite jusqu'à<span class="unit" data-unit="jours"><input type="number" inputmode="numeric" min="0" step="1"></span><small>avant l'arrivée</small><span class="field-error"></span></label>
+            </div>
+        </section>
+
+        <section>
+            <h2>Formulaire de demande</h2>
+            <div class="grid">
+                <label data-field="form.web3formsKey">Clé Web3Forms<input type="text" autocomplete="off" spellcheck="false"><small>Créée sur web3forms.com avec l'adresse qui reçoit les demandes.</small><span class="field-error"></span></label>
+                <label data-field="form.minNights">Séjour minimum accepté<span class="unit" data-unit="nuits"><input type="number" inputmode="numeric" min="1" step="1"></span><small>Le formulaire refuse les séjours plus courts.</small><span class="field-error"></span></label>
+            </div>
+        </section>
+
+        <section>
+            <div class="actions">
+                <button type="submit">Enregistrer</button>
+                <span class="status" id="save-status" role="status"></span>
+            </div>
+        </section>
+
+    </form>
+
+    <form id="deploy-form" novalidate>
+        <section>
+            <h2>Hébergement OVH</h2>
+            <p class="hint">Les informations FTP se trouvent dans l'espace client OVH, rubrique Hébergements, onglet FTP-SSH. Le mot de passe est demandé à chaque publication et n'est jamais enregistré.</p>
+            <div class="grid">
+                <label>Serveur FTP<input type="text" name="host" placeholder="ftp.cluster0XX.hosting.ovh.net" autocomplete="off" spellcheck="false"></label>
+                <label>Identifiant FTP<input type="text" name="user" autocomplete="username" spellcheck="false"></label>
+                <label>Dossier du site<input type="text" name="remoteDir" placeholder="www" spellcheck="false"><small>En général « www ».</small></label>
+            </div>
+            <p class="spaced"><label class="checkbox"><input type="checkbox" name="tls" checked> Connexion chiffrée (recommandé)</label></p>
+            <div class="grid spaced">
+                <label>Mot de passe FTP, pour tester<input type="password" name="testPassword" autocomplete="current-password"><small>Facultatif, jamais enregistré. Sans lui, seuls l'adresse et le serveur sont vérifiés.</small></label>
+            </div>
+            <div class="actions spaced">
+                <button type="button" id="test-connection">Tester la connexion</button>
+                <button type="submit" class="ghost">Enregistrer les réglages</button>
+                <span class="status" id="deploy-status" role="status"></span>
+            </div>
+            <ul class="issues" id="deploy-issues"></ul>
+        </section>
+    </form>
+
+    <section>
+        <h2>Guide OVH</h2>
+        <p class="hint">Les étapes à faire une seule fois, puis la routine de mise à jour.</p>
+
+        <details>
+            <summary>1. Préparer l'hébergement</summary>
+            <ol>
+                <li>Commandez un hébergement web OVH (l'offre Perso suffit pour ce site) et le nom de domaine.</li>
+                <li>Dans l'espace client : Web Cloud, puis Hébergements, puis votre hébergement, onglet Multisite. Vérifiez que le domaine pointe vers le dossier <code>www</code>.</li>
+                <li>Dans le même onglet Multisite, activez le certificat SSL gratuit (Let's Encrypt). Il devient actif en quelques heures.</li>
+            </ol>
+        </details>
+
+        <details>
+            <summary>2. Trouver les accès FTP</summary>
+            <ol>
+                <li>Onglet FTP-SSH de votre hébergement.</li>
+                <li>Le serveur FTP ressemble à <code>ftp.cluster0XX.hosting.ovh.net</code> : recopiez-le dans « Serveur FTP ».</li>
+                <li>L'identifiant FTP principal est affiché sur la même page.</li>
+                <li>Mot de passe oublié : bouton « Modifier le mot de passe » dans la liste des utilisateurs FTP.</li>
+            </ol>
+        </details>
+
+        <details>
+            <summary>3. Première publication</summary>
+            <ol>
+                <li>Remplissez toutes les valeurs, puis cliquez sur Enregistrer.</li>
+                <li>Vérifiez l'aperçu, notamment la page Contact.</li>
+                <li>Si OVH a mis une page « Site en construction » dans <code>www</code>, supprimez le fichier <code>index.html</code> d'OVH avec le gestionnaire FTP de l'espace client, ou cochez « Tout renvoyer ».</li>
+                <li>Cliquez sur Publier sur OVH et saisissez le mot de passe FTP. Le premier envoi transfère tout le site (une centaine de fichiers).</li>
+                <li>Ouvrez le site en ligne et testez une demande de réservation.</li>
+                <li>Si le site ne s'ouvre pas et que le navigateur signale un certificat invalide, le SSL n'est pas encore actif : décochez « Forcer le HTTPS », enregistrez, publiez, puis recochez une fois le cadenas disponible.</li>
+            </ol>
+        </details>
+
+        <details>
+            <summary>4. Mettre à jour les prix ou les dates</summary>
+            <ol>
+                <li>Lancez l'outil (<code>npm run admin</code> ou double-clic sur « to-spiti-mas-administration »).</li>
+                <li>Modifiez les valeurs, cliquez sur Enregistrer, vérifiez l'aperçu.</li>
+                <li>Cliquez sur Publier sur OVH : seuls les fichiers modifiés partent, en quelques secondes.</li>
+            </ol>
+        </details>
+
+        <details>
+            <summary>En cas de problème</summary>
+            <ul>
+                <li>Mot de passe refusé : réinitialisez-le dans l'onglet FTP-SSH, attendez quelques minutes, réessayez.</li>
+                <li>Connexion chiffrée refusée : décochez « Connexion chiffrée » dans Hébergement OVH, puis réessayez.</li>
+                <li>Envoi interrompu : relancez Publier, l'envoi reprend où il s'est arrêté.</li>
+                <li>Site différent de l'aperçu : cochez « Tout renvoyer » à la publication.</li>
+                <li>Solution de secours sans cet outil : générez le site, puis envoyez le contenu du dossier <code>dist</code> dans <code>www</code> avec FileZilla. Le fichier caché <code>.htaccess</code> doit être envoyé aussi.</li>
+            </ul>
+        </details>
+    </section>
+
+</main>
+
+<dialog id="publish-dialog">
+    <form method="dialog" id="publish-form">
+        <h2>Publier sur OVH</h2>
+        <p class="hint flush">Le site est régénéré, puis seuls les fichiers modifiés sont envoyés.</p>
+        <label>Mot de passe FTP<input type="password" name="password" autocomplete="current-password" required></label>
+        <label class="checkbox"><input type="checkbox" name="force"> Tout renvoyer, même les fichiers inchangés</label>
+        <progress value="0" max="1" hidden></progress>
+        <p class="status" id="publish-status" role="status"></p>
+        <ul class="issues" id="publish-issues"></ul>
+        <div class="log" id="publish-log"></div>
+        <div class="actions">
+            <button type="submit" id="publish-button">Publier</button>
+            <button type="button" class="ghost" id="close-publish">Fermer</button>
+        </div>
+    </form>
+</dialog>
+
+<script src="/admin.js"></script>
+
+</body>
+</html>

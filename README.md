@@ -1,120 +1,116 @@
 # To Spiti Mas, site de la maison à Ios
 
-Site statique en 5 langues : français, anglais, espagnol, italien et grec.
+Le projet contient deux applications :
+
+- le site public, statique, en 5 langues (français, anglais, espagnol, italien et grec), hébergé chez OVH ;
+- l'outil d'administration, qui tourne uniquement sur votre ordinateur. Il modifie les prix et les dates, génère le site et le publie chez OVH.
+
+Il faut Node.js 20 ou plus récent. Il n'y a aucune dépendance à installer.
+
+## Démarrer
+
+| Pour | Sur Mac | Sur Windows | Dans un terminal |
+| --- | --- | --- | --- |
+| Ouvrir l'outil d'administration | double-clic sur `to-spiti-mas-administration.command` | double-clic sur `to-spiti-mas-administration.bat` | `npm run admin` |
+| Voir le site en local pendant qu'on modifie le code | double-clic sur `to-spiti-mas-apercu.command` | double-clic sur `to-spiti-mas-apercu.bat` | `npm start` |
+| Générer le site sans le servir | | | `npm run build` |
+
+La première fois, macOS peut bloquer un fichier `.command`. Faites un clic droit, choisissez Ouvrir, puis confirmez.
+
+Laissez la fenêtre du terminal ouverte tant que vous utilisez l'outil ou l'aperçu. La fermer les arrête.
 
 ## Organisation
 
-| Dossier | Contenu |
+Les dossiers techniques portent des noms anglais. Ce que vous manipulez vous-même porte un nom français : les lanceurs, `ressources/` et ce fichier.
+
+```
+to-spiti-mas/
+├── site/                 le site public, à modifier ici
+│   ├── pages/            une page HTML par page du site, en français
+│   ├── partials/         l'en-tête, le pied de page et le <head>, communs à toutes les pages
+│   ├── styles/           le CSS, un fichier par sujet, assemblé en un seul site.css
+│   ├── assets/js/        le JavaScript du site
+│   ├── assets/img/       les photos du site, déjà réduites pour le web
+│   ├── lang/             les traductions, un fichier par langue
+│   └── data/infos.json   les prix, dates et réglages modifiés par l'outil d'administration
+├── admin/                l'outil d'administration
+│   ├── server.js         le serveur local et ses adresses
+│   ├── fields.js         la liste des champs, leurs vérifications et la checklist
+│   ├── ftp.js            l'envoi chez OVH et le diagnostic de connexion
+│   ├── storage.js        la lecture et l'écriture des réglages locaux
+│   └── ui/               la page de l'outil (HTML, CSS, JavaScript)
+├── scripts/
+│   ├── build.js          génère le site dans dist/
+│   └── preview.js        sert dist/ en local et régénère à chaque modification
+├── ressources/           les originaux, jamais mis en ligne
+│   ├── photos/           les photos en pleine résolution (maison, Airbnb, photos libres et leurs crédits)
+│   ├── logo/             le logo et la branche d'olivier, versions originales
+│   └── ancien-site/      la première version du site
+└── dist/                 le site généré, à ne jamais modifier à la main
+```
+
+## Les styles
+
+`scripts/build.js` assemble les fichiers de `site/styles/` dans cet ordre, en un seul `dist/assets/css/site.css` :
+
+| Fichier | Contenu |
 | --- | --- |
-| `src/` | Les pages en français, à modifier ici |
-| `src/partials/` | L'en-tête, le pied de page et le `<head>` communs à toutes les pages |
-| `src/assets/` | Le CSS, le JavaScript et les photos du site |
-| `lang/` | Les traductions, un fichier JSON par langue |
-| `dist/` | Le site généré, à mettre en ligne. Ne pas le modifier à la main |
-| `images/` | Les photos originales, en pleine résolution |
-| `00 - archives/` | L'ancienne version du site |
+| `base.css` | couleurs, polices, textes, boutons, sections communes |
+| `layout.css` | en-tête et menu, haut des pages intérieures, bandeau bleu, pied de page, branche d'olivier |
+| `components.css` | texte et photos côte à côte, galerie et albums, panorama, tableaux, blocs d'informations |
+| `home.css`, `house.css`, `guide.css`, `infos.css`, `contact.css`, `legal.css` | une feuille par page |
 
-## Voir le site en local
-
-Il faut Node.js 20 ou plus récent. Aucune dépendance à installer.
-
-Sur Mac, Windows ou Linux, dans un terminal ouvert dans le dossier du site :
-
-```bash
-npm start
-```
-
-Sur Mac, un double-clic sur `Lancer le site.command` fait la même chose. Si macOS bloque le fichier, faites un clic droit puis Ouvrir.
-
-Sur Windows, un double-clic sur `Lancer le site.bat` fait la même chose.
-
-Le site s'ouvre sur http://localhost:8080/fr/. Si le port 8080 est déjà pris, le serveur essaie 8081, puis 8082, et affiche l'adresse retenue. Chaque modification dans `src/` ou `lang/` régénère le site : rechargez la page pour la voir. Faites `Ctrl+C` pour arrêter.
-
-Sur Mac et Linux, `PORT=3000 npm start` choisit le port, et `NO_OPEN=1 npm start` évite d'ouvrir le navigateur.
-
-Pour générer le site sans le servir, avant une mise en ligne par exemple :
-
-```bash
-npm run build
-```
-
-Le script affiche les traductions manquantes. Un texte manquant reste en français dans les autres langues.
+Les règles pour mobile sont écrites à la fin de chaque fichier, à côté des éléments qu'elles adaptent.
 
 ## Modifier un texte
 
-Chaque texte traduisible porte un attribut `data-i18n="cle"` dans `src/`.
+Chaque texte traduisible porte un attribut `data-i18n="cle"` dans `site/pages/`.
 
-1. Modifiez le texte français dans la page de `src/`.
-2. Lancez `node build.js`. Le fichier `lang/fr.json` se met à jour tout seul.
-3. Modifiez la même clé dans `lang/en.json`, `lang/es.json`, `lang/it.json` et `lang/el.json`.
+1. Modifiez le texte français dans la page de `site/pages/`.
+2. Lancez `npm run build`. Le fichier `site/lang/fr.json` se met à jour tout seul.
+3. Modifiez la même clé dans `en.json`, `es.json`, `it.json` et `el.json`, dans `site/lang/`.
 
-Pour ajouter un texte, donnez-lui une nouvelle clé, puis ajoutez cette clé dans les 4 fichiers de traduction.
+Pour un nouveau texte, donnez-lui une nouvelle clé, puis ajoutez-la dans les 4 fichiers de traduction. Le build signale les clés manquantes. Un texte manquant reste en français dans les autres langues.
 
 Pour un texte alternatif d'image ou un `placeholder`, l'attribut s'écrit `data-i18n-alt="cle"` ou `data-i18n-placeholder="cle"`.
 
-## Remplacer une photo
-
-Les emplacements « Photo à venir » sont des blocs `<div class="ph">`. Remplacez-les par une balise `<img>`.
-
-Pour remplacer une photo existante, déposez la nouvelle dans `src/assets/img/` sous le même nom. Gardez une largeur de 1800 px au maximum. Sur Mac, cette commande réduit une photo :
-
-```bash
-sips -s format jpeg -s formatOptions 65 -Z 1800 photo.jpg --out src/assets/img/nom.jpg
-```
+Les repères comme `{{price:seasons.high.night}}` affichent une valeur de `site/data/infos.json`. Gardez-les à l'identique dans chaque traduction : le build bloque la publication si une langue en perd un.
 
 ## Textes à compléter
 
 Les textes à compléter apparaissent en rose, entre crochets. Pour les retrouver :
 
 ```bash
-grep -n 'class="todo"' src/*.html
+grep -n 'class="todo"' site/pages/*.html
 ```
 
-## Outil d'administration
+## Remplacer une photo
 
-L'outil sert à modifier les informations qui changent souvent, à générer le site et à le publier chez OVH. Il tourne uniquement sur votre ordinateur et n'est jamais mis en ligne.
+Déposez la nouvelle photo dans `site/assets/img/`, sous le même nom que l'ancienne, avec une largeur de 1800 px au maximum. Gardez l'original dans `ressources/photos/`. Sur Mac, cette commande réduit une photo :
 
 ```bash
-npm run admin
+sips -s format jpeg -s formatOptions 65 -Z 1800 original.jpg --out site/assets/img/nom.jpg
 ```
 
-Sur Mac, un double-clic sur `to-spiti-mas-administration.command` fait la même chose. Sur Windows, utilisez `to-spiti-mas-administration.bat`.
+Les photos sous licence libre doivent rester créditées : leurs auteurs sont listés dans `ressources/photos/libres/credits.json` et sur la page Mentions légales.
+
+## Outil d'administration
 
 L'outil s'ouvre sur http://localhost:8090/. Il permet de modifier :
 
 - la période d'ouverture des réservations ;
 - les prix par saison et le séjour minimum ;
 - les heures d'arrivée et de départ ;
-- l'acompte, le solde et la caution ;
-- la clé Web3Forms ;
+- l'acompte, le solde, la caution et l'annulation gratuite ;
+- la clé Web3Forms, qui fait arriver les demandes de réservation par e-mail ;
 - l'adresse du site et le HTTPS forcé.
 
-Les valeurs sont enregistrées dans `data/infos.json`. Le site les affiche dans les 5 langues, au format de chaque langue.
+Les valeurs sont enregistrées dans `site/data/infos.json`. Le site les affiche dans les 5 langues, au format de chaque langue.
 
-Le bouton Publier sur OVH génère le site, puis envoie en FTP chiffré uniquement les fichiers modifiés. Le mot de passe FTP est demandé à chaque fois et n'est jamais enregistré. Les réglages FTP sont dans `deploy.config.json`, et la liste des fichiers déjà envoyés dans `.deploy-manifest.json`.
+Le bouton Publier sur OVH vérifie les réglages et la connexion, génère le site, puis envoie en FTP chiffré uniquement les fichiers modifiés. Le mot de passe FTP est demandé à chaque fois et n'est jamais enregistré. Les réglages FTP sont dans `admin/deploy.config.json`, et la liste des fichiers déjà envoyés dans `admin/.deploy-manifest.json`. Ces deux fichiers restent sur votre ordinateur.
 
 Le guide pas à pas pour OVH est dans l'outil, en bas de la page.
 
-## Formulaire de réservation
+## Mise en ligne sans l'outil
 
-Le formulaire envoie les demandes par e-mail avec Web3Forms, un service gratuit.
-
-1. Créez une clé sur https://web3forms.com avec l'adresse qui doit recevoir les demandes.
-2. Saisissez cette clé dans l'outil d'administration, section Formulaire de demande.
-
-## Mise en ligne
-
-Le site généré dans `dist/` est entièrement statique. Il marche chez tout hébergeur de fichiers.
-
-| Hébergeur | Réglages |
-| --- | --- |
-| Netlify | Rien à faire : le fichier `netlify.toml` lance `node build.js` et publie `dist/`. |
-| Vercel | Commande de build `node build.js`, dossier de sortie `dist`. |
-| Cloudflare Pages | Commande de build `node build.js`, dossier de sortie `dist`. |
-| GitHub Pages, OVH, FTP | Lancez `npm run build`, puis envoyez le contenu de `dist/`. |
-
-Une adresse inconnue affiche `404.html`, qui renvoie vers l'accueil dans la langue du visiteur. Netlify, Vercel, Cloudflare Pages et GitHub Pages l'utilisent tout seuls. Sur un serveur Apache, comme chez OVH, ajoutez `ErrorDocument 404 /404.html` dans un fichier `.htaccess`. Sur nginx, ajoutez `error_page 404 /404.html;`.
-
-La page `404.html` suppose que le site est à la racine du domaine. Elle ne marche pas dans un sous-dossier, comme `exemple.github.io/site/`.
-
-L'adresse du site se règle dans l'outil d'administration, section Site. Elle sert aux liens entre les langues pour Google. Vérifiez-la avant la mise en ligne.
+Le build génère un site entièrement statique, avec un fichier `.htaccess` pour OVH : page 404, compression, cache et redirection HTTPS. En secours, lancez `npm run build`, puis envoyez tout le contenu de `dist/` dans le dossier `www` d'OVH avec FileZilla, fichier caché `.htaccess` compris.

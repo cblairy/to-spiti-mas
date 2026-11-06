@@ -1,2 +1,2 @@
 #!/bin/bash
-cd "$(dirname "$0")" && node admin.js
+cd "$(dirname "$0")" && node admin/server.js

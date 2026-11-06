@@ -1,0 +1,91 @@
+.route {
+    list-style: none;
+    counter-reset: route;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 36px;
+}
+
+.route li {
+    counter-increment: route;
+    position: relative;
+    padding-top: 64px;
+}
+
+.route li::before {
+    content: counter(route);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 44px;
+    height: 52px;
+    border: 1px solid var(--ink);
+    border-radius: 999px 999px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    padding-top: 6px;
+}
+
+.climate {
+    min-width: 680px;
+}
+
+.climate td,
+.climate th {
+    text-align: center;
+    padding-right: 8px;
+}
+
+.climate th[scope="row"] {
+    text-align: left;
+}
+
+.climate .is-season {
+    background: rgba(127, 159, 207, 0.12);
+}
+
+.links {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0 40px;
+    list-style: none;
+}
+
+.links a {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+    text-decoration: none;
+}
+
+.links a:hover {
+    border-bottom-color: var(--ink);
+}
+
+.links small {
+    color: var(--text-soft);
+    font-size: 0.8rem;
+}
+
+@media (max-width: 1000px) {
+    .links {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .links,
+    .route {
+        grid-template-columns: 1fr;
+    }
+
+    .climate {
+        min-width: 560px;
+        font-size: 0.85rem;
+    }
+}
