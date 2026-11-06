@@ -52,7 +52,12 @@
             var item = album[current];
             var photo = photoOf(item);
             var figcaption = item.tagName === "IMG" ? null : item.querySelector("figcaption");
+            image.removeAttribute("srcset");
             image.src = photo.getAttribute("src");
+            if (photo.getAttribute("srcset")) {
+                image.sizes = "(min-width: 1000px) 88vw, 100vw";
+                image.srcset = photo.getAttribute("srcset");
+            }
             image.alt = photo.alt;
             caption.textContent = figcaption ? figcaption.textContent : photo.alt;
             counter.textContent = album.length > 1 ? (current + 1) + " / " + album.length : "";

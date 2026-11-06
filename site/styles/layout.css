@@ -339,7 +339,7 @@ main {
 .page-hero h1::after,
 .cta-band h2::before,
 .site-footer .olive {
-    --olive: url("../img/olive-branch.png");
+    --olive: url("../img/variants/olive-branch-300.webp");
     --rule: var(--ink);
     --branch: 80px;
     --line: 60px;
@@ -360,13 +360,13 @@ main {
 }
 
 .page-hero h1::after {
-    --olive: url("../img/olive-branch-white.png");
+    --olive: url("../img/variants/olive-branch-white-300.webp");
     --rule: rgba(255, 255, 255, 0.85);
     margin: 16px 0 8px;
 }
 
 .cta-band h2::before {
-    --olive: url("../img/olive-branch-white.png");
+    --olive: url("../img/variants/olive-branch-white-300.webp");
     --rule: rgba(255, 255, 255, 0.7);
     margin: 0 auto 24px;
 }

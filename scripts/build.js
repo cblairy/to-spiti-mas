@@ -17,6 +17,7 @@ const ROOT = path.join(__dirname, "..");
 const SITE = path.join(ROOT, "site");
 const PAGES = path.join(SITE, "pages");
 const STYLES = path.join(SITE, "styles");
+const IMAGE_MANIFEST = path.join(SITE, "assets", "img", "variants", "manifest.json");
 const STYLESHEETS = ["base", "layout", "components", "home", "house", "guide", "infos", "contact", "legal"];
 const DIST = path.join(ROOT, "dist");
 const LANG_DIR = path.join(SITE, "lang");
@@ -173,8 +174,44 @@ function fillPlaceholders(html, { code, flag }, pageName) {
     );
 }
 
+function loadImageManifest() {
+  return fs.existsSync(IMAGE_MANIFEST) ? JSON.parse(fs.readFileSync(IMAGE_MANIFEST, "utf8")) : {};
+}
+
+function setAttribute(tag, name, value) {
+  return new RegExp(`\\s${name}="`).test(tag) ? tag : tag.replace(/\s*\/?>$/, ` ${name}="${value}">`);
+}
+
+function responsiveImages(html, images) {
+  return html.replace(/<img\b[^>]*>/g, (tag) => {
+    const source = tag.match(/\ssrc="\.\.\/assets\/img\/([^"]+)"/);
+    const image = source && images[source[1]];
+    if (!image) return tag;
+    const base = path.parse(source[1]).name;
+    const srcset = image.widths.map((width) => `../assets/img/variants/${base}-${width}.webp ${width}w`).join(", ");
+    let result = setAttribute(tag, "srcset", srcset);
+    result = setAttribute(result, "sizes", "100vw");
+    result = setAttribute(result, "width", image.width);
+    result = setAttribute(result, "height", image.height);
+    return setAttribute(result, "decoding", "async");
+  });
+}
+
+function onlyNeededFonts(html, code) {
+  return code === "el" ? html : html.replace("&family=GFS+Didot", "");
+}
+
+function minifyCss(css) {
+  return css
+    .replace(/\/\*[\s\S]*?\*\//g, "")
+    .replace(/\s+/g, " ")
+    .replace(/\s*([{};])\s*/g, "$1")
+    .replace(/;}/g, "}")
+    .trim();
+}
+
 function writeStylesheet() {
-  const css = STYLESHEETS.map((name) => fs.readFileSync(path.join(STYLES, `${name}.css`), "utf8").trim()).join("\n\n");
+  const css = minifyCss(STYLESHEETS.map((name) => fs.readFileSync(path.join(STYLES, `${name}.css`), "utf8")).join("\n"));
   const target = path.join(DIST, "assets", "css", "site.css");
   fs.mkdirSync(path.dirname(target), { recursive: true });
   fs.writeFileSync(target, css + "\n");
@@ -232,6 +269,7 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
   return `${https}ErrorDocument 404 /404.html
 Options -Indexes
 AddDefaultCharset UTF-8
+AddType image/webp .webp
 
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml
@@ -245,6 +283,7 @@ AddDefaultCharset UTF-8
   ExpiresByType application/javascript "access plus 1 week"
   ExpiresByType image/jpeg "access plus 1 month"
   ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/webp "access plus 1 month"
 </IfModule>
 `;
 }
@@ -255,6 +294,7 @@ function build() {
   const pages = readPages().map(({ name, html }) => ({ name, html: includePartials(html, partials) }));
 
   const data = loadData();
+  const images = loadImageManifest();
   siteUrl = String(data.site?.url || DEFAULT_SITE_URL).replace(/\/+$/, "");
   const source = {};
   for (const page of pages) extractSourceStrings(page.html, page.name, source);
@@ -281,7 +321,7 @@ function build() {
     fs.mkdirSync(outDir, { recursive: true });
     for (const page of pages) {
       const translated = renderData(translate(page.html, dictionary, source), data, language.locale, page.name);
-      const html = fillPlaceholders(translated, language, page.name);
+      const html = onlyNeededFonts(responsiveImages(fillPlaceholders(translated, language, page.name), images), language.code);
       fs.writeFileSync(path.join(outDir, page.name), html);
     }
   }

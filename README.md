@@ -14,6 +14,7 @@ Il faut Node.js 20 ou plus récent. Il n'y a aucune dépendance à installer.
 | Ouvrir l'outil d'administration | double-clic sur `to-spiti-mas-administration.command` | double-clic sur `to-spiti-mas-administration.bat` | `npm run admin` |
 | Voir le site en local pendant qu'on modifie le code | double-clic sur `to-spiti-mas-apercu.command` | double-clic sur `to-spiti-mas-apercu.bat` | `npm start` |
 | Générer le site sans le servir | | | `npm run build` |
+| Créer les versions WebP après un ajout de photo | | | `npm run images` |
 
 La première fois, macOS peut bloquer un fichier `.command`. Faites un clic droit, choisissez Ouvrir, puis confirmez.
 
@@ -30,7 +31,7 @@ to-spiti-mas/
 │   ├── partials/         l'en-tête, le pied de page et le <head>, communs à toutes les pages
 │   ├── styles/           le CSS, un fichier par sujet, assemblé en un seul site.css
 │   ├── assets/js/        le JavaScript du site
-│   ├── assets/img/       les photos du site, déjà réduites pour le web
+│   ├── assets/img/       les photos du site, déjà réduites pour le web, et leurs versions WebP dans variants/
 │   ├── lang/             les traductions, un fichier par langue
 │   └── data/infos.json   les prix, dates et réglages modifiés par l'outil d'administration
 ├── admin/                l'outil d'administration
@@ -41,6 +42,7 @@ to-spiti-mas/
 │   └── ui/               la page de l'outil (HTML, CSS, JavaScript)
 ├── scripts/
 │   ├── build.js          génère le site dans dist/
+│   ├── images.js         crée les versions WebP des photos
 │   └── preview.js        sert dist/ en local et régénère à chaque modification
 ├── ressources/           les originaux, jamais mis en ligne
 │   ├── photos/           les photos en pleine résolution (maison, Airbnb, photos libres et leurs crédits)
@@ -84,13 +86,28 @@ Les textes à compléter apparaissent en rose, entre crochets. Pour les retrouve
 grep -n 'class="todo"' site/pages/*.html
 ```
 
-## Remplacer une photo
+## Remplacer ou ajouter une photo
 
-Déposez la nouvelle photo dans `site/assets/img/`, sous le même nom que l'ancienne, avec une largeur de 1800 px au maximum. Gardez l'original dans `ressources/photos/`. Sur Mac, cette commande réduit une photo :
+Les photos du site existent en deux formes :
 
-```bash
-sips -s format jpeg -s formatOptions 65 -Z 1800 original.jpg --out site/assets/img/nom.jpg
-```
+- la photo de référence, en JPEG ou PNG, dans `site/assets/img/` ;
+- ses versions WebP en 480, 800, 1200 et 1800 px, dans `site/assets/img/variants/`. Chaque appareil télécharge seulement la taille dont il a besoin.
+
+Pour remplacer ou ajouter une photo :
+
+1. Gardez l'original dans `ressources/photos/`.
+2. Déposez la photo dans `site/assets/img/`, avec une largeur de 1800 px au maximum. Sur Mac, cette commande réduit une photo :
+
+   ```bash
+   sips -s format jpeg -s formatOptions 75 -Z 1800 original.jpg --out site/assets/img/nom.jpg
+   ```
+
+3. Lancez `npm run images`. Le script crée les versions WebP des photos nouvelles ou modifiées, et supprime celles des photos retirées.
+4. Lancez `npm run build`, ou laissez l'aperçu le faire.
+
+`npm run images` a besoin de l'outil `cwebp` : sur Mac, `brew install webp`. Sur Windows et Linux, il se télécharge sur https://developers.google.com/speed/webp/download. Le build, lui, n'en a pas besoin.
+
+Dans les pages, une image s'écrit simplement `<img src="../assets/img/nom.jpg" alt="…">`. Le build ajoute tout seul les versions WebP, les dimensions et le chargement différé du décodage. Ajoutez un attribut `sizes` quand l'image n'occupe pas toute la largeur de l'écran, par exemple `sizes="(max-width: 640px) 100vw, 33vw"` pour une carte sur trois colonnes. Ajoutez `loading="lazy"` à toutes les images qui ne sont pas visibles à l'ouverture de la page, et `fetchpriority="high"` à la grande image du haut.
 
 Les photos sous licence libre doivent rester créditées : leurs auteurs sont listés dans `ressources/photos/libres/credits.json` et sur la page Mentions légales.
 

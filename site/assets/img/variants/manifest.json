@@ -1,0 +1,586 @@
+{
+  "arche-solarium.jpg": {
+    "width": 1440,
+    "height": 959,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ]
+  },
+  "chambre-1-b.jpg": {
+    "width": 1440,
+    "height": 960,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ]
+  },
+  "chambre-1-c.jpg": {
+    "width": 1440,
+    "height": 960,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ]
+  },
+  "chambre-1.jpg": {
+    "width": 1800,
+    "height": 1349,
+    "widths": [
+      480,
+      800,
+      1200,
+      1800
+    ]
+  },
+  "chambre-2-b.jpg": {
+    "width": 1440,
+    "height": 960,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ]
+  },
+  "chambre-2-c.jpg": {
+    "width": 1440,
+    "height": 1080,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ]
+  },
+  "chambre-2.jpg": {
+    "width": 1800,
+    "height": 1350,
+    "widths": [
+      480,
+      800,
+      1200,
+      1800
+    ]
+  },
+  "chambre-3-b.jpg": {
+    "width": 1440,
+    "height": 1080,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ]
+  },
+  "chambre-3-c.jpg": {
+    "width": 1440,
+    "height": 1080,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ]
+  },
+  "chambre-3.jpg": {
+    "width": 1800,
+    "height": 1350,
+    "widths": [
+      480,
+      800,
+      1200,
+      1800
+    ]
+  },
+  "coin-salon.jpg": {
+    "width": 1440,
+    "height": 960,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ]
+  },
+  "coin-tele.jpg": {
+    "width": 1800,
+    "height": 1350,
+    "widths": [
+      480,
+      800,
+      1200,
+      1800
+    ]
+  },
+  "cuisine-ext.jpg": {
+    "width": 1800,
+    "height": 1350,
+    "widths": [
+      480,
+      800,
+      1200,
+      1800
+    ]
+  },
+  "cuisine-int.jpg": {
+    "width": 1800,
+    "height": 1350,
+    "widths": [
+      480,
+      800,
+      1200,
+      1800
+    ]
+  },
+  "douche-exterieure-detail.jpg": {
+    "width": 1440,
+    "height": 1080,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ]
+  },
+  "hero-ios.jpg": {
+    "width": 1800,
+    "height": 1200,
+    "widths": [
+      480,
+      800,
+      1200,
+      1800
+    ]
+  },
+  "ios-agia-theodoti.jpg": {
+    "width": 1600,
+    "height": 1200,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "ios-coucher-montagne.jpg": {
+    "width": 1440,
+    "height": 739,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ]
+  },
+  "ios-coucher-port.jpg": {
+    "width": 1440,
+    "height": 795,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ]
+  },
+  "ios-coucher-soleil.jpg": {
+    "width": 1440,
+    "height": 1080,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ]
+  },
+  "ios-koumbara-2.jpg": {
+    "width": 1600,
+    "height": 1200,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "ios-manganari.jpg": {
+    "width": 1600,
+    "height": 1066,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "ios-mylopotas-3.jpg": {
+    "width": 1600,
+    "height": 900,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "ios-paleokastro-2.jpg": {
+    "width": 1600,
+    "height": 1200,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "ios-port-ferry.jpg": {
+    "width": 2400,
+    "height": 1600,
+    "widths": [
+      480,
+      800,
+      1200,
+      1800
+    ]
+  },
+  "ios-port-peche.jpg": {
+    "width": 1440,
+    "height": 1080,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ]
+  },
+  "ios-psathi.jpg": {
+    "width": 1600,
+    "height": 1066,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "ios-skarkos.jpg": {
+    "width": 1600,
+    "height": 1059,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "ios-theatre-elytis-2.jpg": {
+    "width": 1600,
+    "height": 1059,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "ios-tombe-homere.jpg": {
+    "width": 1600,
+    "height": 1059,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "ios-yialos.jpg": {
+    "width": 1440,
+    "height": 1080,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ]
+  },
+  "jardin-douche-ext.jpg": {
+    "width": 1600,
+    "height": 1108,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600
+    ]
+  },
+  "jardin-nuit.jpg": {
+    "width": 1440,
+    "height": 1080,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ]
+  },
+  "jardin.jpg": {
+    "width": 1440,
+    "height": 1080,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ]
+  },
+  "kalimera.jpg": {
+    "width": 1800,
+    "height": 1350,
+    "widths": [
+      480,
+      800,
+      1200,
+      1800
+    ]
+  },
+  "la-maison.jpg": {
+    "width": 1800,
+    "height": 1350,
+    "widths": [
+      480,
+      800,
+      1200,
+      1800
+    ]
+  },
+  "lever-de-lune.jpg": {
+    "width": 1440,
+    "height": 1080,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ]
+  },
+  "logo-tospitimas.png": {
+    "width": 400,
+    "height": 400,
+    "widths": [
+      160,
+      270
+    ]
+  },
+  "maison-jardin.jpg": {
+    "width": 1440,
+    "height": 960,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ]
+  },
+  "niches-chambre2.jpg": {
+    "width": 1800,
+    "height": 1350,
+    "widths": [
+      480,
+      800,
+      1200,
+      1800
+    ]
+  },
+  "olive-branch-white.png": {
+    "width": 300,
+    "height": 200,
+    "widths": [
+      160,
+      300
+    ]
+  },
+  "olive-branch.png": {
+    "width": 300,
+    "height": 109,
+    "widths": [
+      160,
+      300
+    ]
+  },
+  "outdoor-lounge.jpg": {
+    "width": 1800,
+    "height": 1350,
+    "widths": [
+      480,
+      800,
+      1200,
+      1800
+    ]
+  },
+  "plancha-poisson.jpg": {
+    "width": 1440,
+    "height": 1080,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ]
+  },
+  "poisson.jpg": {
+    "width": 1800,
+    "height": 1350,
+    "widths": [
+      480,
+      800,
+      1200,
+      1800
+    ]
+  },
+  "repas-exterieur.jpg": {
+    "width": 1800,
+    "height": 1349,
+    "widths": [
+      480,
+      800,
+      1200,
+      1800
+    ]
+  },
+  "repas-lit-ext.jpg": {
+    "width": 1800,
+    "height": 1349,
+    "widths": [
+      480,
+      800,
+      1200,
+      1800
+    ]
+  },
+  "repas.jpg": {
+    "width": 1800,
+    "height": 1342,
+    "widths": [
+      480,
+      800,
+      1200,
+      1800
+    ]
+  },
+  "salle-a-manger.jpg": {
+    "width": 1440,
+    "height": 960,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ]
+  },
+  "sdb-hotes-douche.jpg": {
+    "width": 1440,
+    "height": 960,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ]
+  },
+  "sdb-hotes-miroir.jpg": {
+    "width": 1440,
+    "height": 960,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ]
+  },
+  "sdb-hotes.jpg": {
+    "width": 1440,
+    "height": 1920,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ]
+  },
+  "sdb-proprietaires-douche.jpg": {
+    "width": 1440,
+    "height": 960,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ]
+  },
+  "sdb-proprietaires.jpg": {
+    "width": 1440,
+    "height": 960,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ]
+  },
+  "sdb-rdc-vasque.jpg": {
+    "width": 1440,
+    "height": 1920,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ]
+  },
+  "sdb-rdc.jpg": {
+    "width": 1440,
+    "height": 1920,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ]
+  },
+  "sdb1.jpg": {
+    "width": 1800,
+    "height": 1349,
+    "widths": [
+      480,
+      800,
+      1200,
+      1800
+    ]
+  },
+  "solarium.jpg": {
+    "width": 2600,
+    "height": 1949,
+    "widths": [
+      480,
+      800,
+      1200,
+      1800
+    ]
+  },
+  "terrasse-sunset.jpg": {
+    "width": 1800,
+    "height": 989,
+    "widths": [
+      480,
+      800,
+      1200,
+      1800
+    ]
+  }
+}
