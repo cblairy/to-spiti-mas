@@ -224,6 +224,7 @@ main {
     margin-top: var(--header-height);
     overflow: hidden;
     color: var(--white);
+    background-color: #3d4a63;
 }
 
 .page-hero--short {

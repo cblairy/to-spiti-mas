@@ -81,7 +81,6 @@
   "contact.faq_linen_q": "¿Se incluye la ropa de cama?",
   "contact.faq_linen_a": "Sí, la ropa de cama y las toallas de baño están incluidas. <span class=\"todo\">[Toallas de playa: ¿sí o no?]</span>",
   "contact.faq_baby_q": "¿Podemos venir con un bebé?",
-  "contact.faq_baby_a": "Por supuesto. <span class=\"todo\">[¿Cuna y trona disponibles bajo petición?]</span> Con niños pequeños, tenga cuidado con las escaleras y las terrazas elevadas.",
   "contact.faq_cleaning_q": "¿Se limpia la casa durante la estancia?",
   "contact.faq_cleaning_a": "Es posible una limpieza durante la estancia bajo petición. <span class=\"todo\">[Tarifa]</span>",
   "contact.faq_wifi_q": "¿Se puede teletrabajar?",
@@ -101,7 +100,6 @@
   "contact.f_child_more": "Añadir un niño",
   "contact.sum_nights": "{n} noches",
   "contact.sum_guests": "{n} viajeros",
-  "contact.sum_too_many": "Máximo 8 viajeros",
   "contact.sum_min": "Estancia mínima: {n} noches",
   "contact.sum_order": "La fecha de salida debe ser posterior a la de llegada",
   "contact.sum_closed": "La casa se alquila del {open} al {close}",
@@ -406,8 +404,6 @@
   "house.eq_comfort_1": "Ventiladores de techo",
   "house.eq_comfort_2": "Mosquiteras",
   "house.eq_comfort_3": "Ropa de cama y toallas",
-  "house.eq_comfort_4": "Wifi",
-  "house.eq_comfort_5": "Televisión",
   "house.eq_comfort_6": "Libros y espacio de trabajo",
   "house.eq_practical": "Práctico",
   "house.eq_practical_1": "Lavadora y tendedero",
@@ -476,5 +472,9 @@
   "legal.photos_text3": "Las fotos de la casa pertenecen a los propietarios. Cualquier reproducción requiere su autorización. Las fotos de los lugares y playas de la página Ios &amp; Kampos, y la del puerto de la página Información práctica, están publicadas con licencia libre por sus autores:",
   "contact.step3_text2": "El pago de un anticipo del {{percent:payment.deposit}} del precio de la estancia confirma la reserva. El resto se abona {{value:payment.balanceDaysBefore}} días antes de la llegada.",
   "legal.hosting_text2": "OVH SAS, 2 rue Kellermann, 59100 Roubaix, Francia.<br>Teléfono: 1007 desde Francia, o +33&nbsp;9&nbsp;72&nbsp;10&nbsp;10&nbsp;07.<br>Web: <a href=\"https://www.ovhcloud.com\">ovhcloud.com</a>",
-  "ios.mylopotas_alt2": "La bahía de Mylopotas, su larga playa y sus casas blancas"
+  "ios.mylopotas_alt2": "La bahía de Mylopotas, su larga playa y sus casas blancas",
+  "contact.guest_warning": "La casa admite 8 huéspedes como máximo. Si son más, escríbanos en el mensaje y veremos juntos qué es posible.",
+  "house.eq_comfort_7": "Cuna",
+  "contact.faq_baby_a2": "Por supuesto, hay una cuna a su disposición. <span class=\"todo\">[¿Trona disponible?]</span> Con niños pequeños, tenga cuidado con las escaleras y las terrazas elevadas.",
+  "house.eq_comfort_tv_wifi": "Wi-Fi y televisión"
 }

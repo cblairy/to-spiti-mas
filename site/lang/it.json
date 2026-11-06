@@ -81,7 +81,6 @@
   "contact.faq_linen_q": "La biancheria è fornita?",
   "contact.faq_linen_a": "Sì, lenzuola e asciugamani da bagno sono forniti. <span class=\"todo\">[Teli da spiaggia: sì o no?]</span>",
   "contact.faq_baby_q": "Si può venire con un neonato?",
-  "contact.faq_baby_a": "Certo. <span class=\"todo\">[Lettino e seggiolone disponibili su richiesta?]</span> Attenzione alle scale e alle terrazze rialzate con bambini piccoli.",
   "contact.faq_cleaning_q": "La pulizia è prevista durante il soggiorno?",
   "contact.faq_cleaning_a": "Una pulizia durante il soggiorno è possibile su richiesta. <span class=\"todo\">[Tariffa]</span>",
   "contact.faq_wifi_q": "Si può lavorare da remoto?",
@@ -101,7 +100,6 @@
   "contact.f_child_more": "Aggiungi un bambino",
   "contact.sum_nights": "{n} notti",
   "contact.sum_guests": "{n} ospiti",
-  "contact.sum_too_many": "Massimo 8 ospiti",
   "contact.sum_min": "Soggiorno minimo: {n} notti",
   "contact.sum_order": "La data di partenza deve seguire la data di arrivo",
   "contact.sum_closed": "La casa si affitta dal {open} al {close}",
@@ -406,8 +404,6 @@
   "house.eq_comfort_1": "Ventilatori a soffitto",
   "house.eq_comfort_2": "Zanzariere",
   "house.eq_comfort_3": "Lenzuola e asciugamani",
-  "house.eq_comfort_4": "Wi-Fi",
-  "house.eq_comfort_5": "Televisione",
   "house.eq_comfort_6": "Libri e zona di lavoro",
   "house.eq_practical": "Pratico",
   "house.eq_practical_1": "Lavatrice e stendibiancheria",
@@ -476,5 +472,9 @@
   "legal.photos_text3": "Le foto della casa appartengono ai proprietari. Ogni riproduzione richiede il loro consenso. Le foto dei luoghi e delle spiagge della pagina Ios &amp; Kampos, e quella del porto della pagina Informazioni pratiche, sono pubblicate con licenza libera dai loro autori:",
   "contact.step3_text2": "Il versamento di un acconto del {{percent:payment.deposit}} del prezzo del soggiorno conferma la prenotazione. Il saldo va versato {{value:payment.balanceDaysBefore}} giorni prima dell'arrivo.",
   "legal.hosting_text2": "OVH SAS, 2 rue Kellermann, 59100 Roubaix, Francia.<br>Telefono: 1007 dalla Francia, oppure +33&nbsp;9&nbsp;72&nbsp;10&nbsp;10&nbsp;07.<br>Sito: <a href=\"https://www.ovhcloud.com\">ovhcloud.com</a>",
-  "ios.mylopotas_alt2": "La baia di Mylopotas, la lunga spiaggia e le case bianche"
+  "ios.mylopotas_alt2": "La baia di Mylopotas, la lunga spiaggia e le case bianche",
+  "contact.guest_warning": "La casa ospita al massimo 8 persone. Se siete di più, scriveteci nel messaggio e vedremo insieme cosa è possibile.",
+  "house.eq_comfort_7": "Lettino per neonati",
+  "contact.faq_baby_a2": "Certo, è disponibile un lettino per neonati. <span class=\"todo\">[Seggiolone disponibile?]</span> Attenzione alle scale e alle terrazze rialzate con bambini piccoli.",
+  "house.eq_comfort_tv_wifi": "Wi-Fi e televisione"
 }

@@ -45,6 +45,7 @@
     position: relative;
     height: min(72vh, 680px);
     overflow: hidden;
+    background-color: #8a8f8f;
 }
 
 .quote-band img {

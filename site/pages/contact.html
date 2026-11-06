@@ -73,7 +73,7 @@
                     <label for="adultes" data-i18n="contact.f_adults">Adultes</label>
                     <div class="stepper">
                         <button type="button" class="stepper-btn" data-step="-1" aria-controls="adultes" aria-label="Retirer un adulte" data-i18n-aria-label="contact.f_adult_less">−</button>
-                        <input type="number" id="adultes" name="adultes" min="1" max="8" value="2" inputmode="numeric" required>
+                        <input type="number" id="adultes" name="adultes" min="1" max="20" value="2" inputmode="numeric" required>
                         <button type="button" class="stepper-btn" data-step="1" aria-controls="adultes" aria-label="Ajouter un adulte" data-i18n-aria-label="contact.f_adult_more">+</button>
                     </div>
                 </div>
@@ -82,21 +82,21 @@
                     <label for="enfants" data-i18n="contact.f_children">Enfants</label>
                     <div class="stepper">
                         <button type="button" class="stepper-btn" data-step="-1" aria-controls="enfants" aria-label="Retirer un enfant" data-i18n-aria-label="contact.f_child_less">−</button>
-                        <input type="number" id="enfants" name="enfants" min="0" max="7" value="0" inputmode="numeric" required>
+                        <input type="number" id="enfants" name="enfants" min="0" max="20" value="0" inputmode="numeric" required>
                         <button type="button" class="stepper-btn" data-step="1" aria-controls="enfants" aria-label="Ajouter un enfant" data-i18n-aria-label="contact.f_child_more">+</button>
                     </div>
                 </div>
 
+                <p class="form-warning field--full" role="status" data-guest-warning hidden data-i18n="contact.guest_warning">La maison accueille 8 voyageurs au maximum. Si vous êtes plus nombreux, écrivez-nous dans le message : nous verrons ensemble ce qui est possible.</p>
+
                 <p class="form-summary" aria-live="polite" data-summary
                    data-text-nights="{n} nuits"
                    data-text-guests="{n} voyageurs"
-                   data-text-too-many="Maximum 8 voyageurs"
                    data-text-min="Séjour minimum : {n} nuits"
                    data-text-order="La date de départ doit suivre la date d'arrivée"
                    data-text-closed="La maison se loue du {open} au {close}"
                    data-i18n-data-text-nights="contact.sum_nights"
                    data-i18n-data-text-guests="contact.sum_guests"
-                   data-i18n-data-text-too-many="contact.sum_too_many"
                    data-i18n-data-text-min="contact.sum_min"
                    data-i18n-data-text-order="contact.sum_order"
                    data-i18n-data-text-closed="contact.sum_closed"></p>
@@ -289,7 +289,7 @@
 
             <details>
                 <summary data-i18n="contact.faq_baby_q">Peut-on venir avec un bébé ?</summary>
-                <p data-i18n="contact.faq_baby_a">Bien sûr. <span class="todo">[Lit bébé et chaise haute disponibles sur demande ?]</span> Attention aux escaliers et aux terrasses en hauteur avec de jeunes enfants.</p>
+                <p data-i18n="contact.faq_baby_a2">Bien sûr, un lit bébé est à votre disposition. <span class="todo">[Chaise haute disponible ?]</span> Attention aux escaliers et aux terrasses en hauteur avec de jeunes enfants.</p>
             </details>
 
             <details>

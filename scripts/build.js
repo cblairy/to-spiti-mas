@@ -193,8 +193,15 @@ function responsiveImages(html, images) {
     result = setAttribute(result, "sizes", "100vw");
     result = setAttribute(result, "width", image.width);
     result = setAttribute(result, "height", image.height);
-    return setAttribute(result, "decoding", "async");
+    return setAttribute(result, "decoding", /\sfetchpriority="high"/.test(result) ? "sync" : "async");
   });
+}
+
+function heroImage(html) {
+  const tag = (html.match(/<img\b[^>]*\sfetchpriority="high"[^>]*>/g) || []).find((img) => !img.includes("logo-tospitimas"));
+  if (!tag) return null;
+  const read = (name) => (tag.match(new RegExp(`\\s${name}="([^"]*)"`)) || [])[1];
+  return { src: read("src"), srcset: read("srcset"), sizes: read("sizes") };
 }
 
 function onlyNeededFonts(html, code) {
@@ -210,9 +217,9 @@ function minifyCss(css) {
     .trim();
 }
 
-function writeStylesheet() {
+function writeStylesheet(out) {
   const css = minifyCss(STYLESHEETS.map((name) => fs.readFileSync(path.join(STYLES, `${name}.css`), "utf8")).join("\n"));
-  const target = path.join(DIST, "assets", "css", "site.css");
+  const target = path.join(out, "assets", "css", "site.css");
   fs.mkdirSync(path.dirname(target), { recursive: true });
   fs.writeFileSync(target, css + "\n");
 }
@@ -228,11 +235,11 @@ function copyDirectory(from, to) {
   }
 }
 
-function writeLanguageRedirect(fileName, base) {
+function writeLanguageRedirect(out, fileName, base) {
   const codes = JSON.stringify(LANGUAGES.map(({ code }) => code));
   const links = LANGUAGES.map(({ code, label }) => `<li><a href="${base}${code}/">${label}</a></li>`).join("");
   fs.writeFileSync(
-    path.join(DIST, fileName),
+    path.join(out, fileName),
     `<!DOCTYPE html>
 <html lang="${SOURCE_LANG}">
 <head>
@@ -300,9 +307,45 @@ function build() {
   for (const page of pages) extractSourceStrings(page.html, page.name, source);
   fs.writeFileSync(path.join(LANG_DIR, `${SOURCE_LANG}.json`), JSON.stringify(source, null, 2) + "\n");
 
-  fs.rmSync(DIST, { recursive: true, force: true, maxRetries: 3 });
-  copyDirectory(path.join(SITE, "assets"), path.join(DIST, "assets"));
-  writeStylesheet();
+  const out = path.join(ROOT, `.dist-${process.pid}-${Date.now()}`);
+  try {
+    writeSite(out, pages, source, data, images);
+  } catch (error) {
+    fs.rmSync(out, { recursive: true, force: true });
+    throw error;
+  }
+  replaceDist(out);
+
+  const keyCount = Object.keys(source).length;
+  console.log(`✓ ${pages.length} pages × ${LANGUAGES.length} langues générées dans dist/ (${keyCount} textes)`);
+  for (const problem of [...new Set(problems)]) console.warn(`⚠ ${problem}`);
+  return { problems: [...new Set(problems)] };
+}
+
+function replaceDist(out) {
+  for (let attempt = 0; attempt < 10; attempt++) {
+    const previous = path.join(ROOT, `.dist-old-${process.pid}-${attempt}`);
+    try {
+      fs.renameSync(DIST, previous);
+    } catch (error) {
+      if (error.code !== "ENOENT") throw error;
+    }
+    try {
+      fs.renameSync(out, DIST);
+      return;
+    } catch (error) {
+      if (!["ENOTEMPTY", "EEXIST", "EPERM"].includes(error.code)) throw error;
+    } finally {
+      fs.rmSync(previous, { recursive: true, force: true });
+    }
+  }
+  fs.rmSync(out, { recursive: true, force: true });
+  throw new Error("Impossible de remplacer dist/ : un autre build est en cours. Relancez dans un instant.");
+}
+
+function writeSite(out, pages, source, data, images) {
+  copyDirectory(path.join(SITE, "assets"), path.join(out, "assets"));
+  writeStylesheet(out);
 
   for (const language of LANGUAGES) {
     const dictionary = language.code === SOURCE_LANG ? source : loadTranslations(language.code);
@@ -317,22 +360,20 @@ function build() {
     }
     if (unknown.length) problems.push(`lang/${language.code}.json : ${unknown.length} clé(s) inutilisée(s) (${unknown.slice(0, 5).join(", ")}${unknown.length > 5 ? "…" : ""})`);
 
-    const outDir = path.join(DIST, language.code);
+    const outDir = path.join(out, language.code);
     fs.mkdirSync(outDir, { recursive: true });
-    for (const page of pages) {
+    const rendered = pages.map((page) => {
       const translated = renderData(translate(page.html, dictionary, source), data, language.locale, page.name);
-      const html = onlyNeededFonts(responsiveImages(fillPlaceholders(translated, language, page.name), images), language.code);
-      fs.writeFileSync(path.join(outDir, page.name), html);
+      return { name: page.name, html: onlyNeededFonts(responsiveImages(fillPlaceholders(translated, language, page.name), images), language.code) };
+    });
+    const heroes = JSON.stringify(Object.fromEntries(rendered.map(({ name, html }) => [name, heroImage(html)]).filter(([, hero]) => hero)));
+    for (const { name, html } of rendered) {
+      fs.writeFileSync(path.join(outDir, name), html.replace("</body>", `<script type="application/json" id="page-heroes">${heroes}</script>\n</body>`));
     }
   }
-  writeLanguageRedirect("index.html", "");
-  writeLanguageRedirect("404.html", "/");
-  fs.writeFileSync(path.join(DIST, ".htaccess"), apacheConfig(Boolean(data.site?.forceHttps)));
-
-  const keyCount = Object.keys(source).length;
-  console.log(`✓ ${pages.length} pages × ${LANGUAGES.length} langues générées dans dist/ (${keyCount} textes)`);
-  for (const problem of [...new Set(problems)]) console.warn(`⚠ ${problem}`);
-  return { problems: [...new Set(problems)] };
+  writeLanguageRedirect(out, "index.html", "");
+  writeLanguageRedirect(out, "404.html", "/");
+  fs.writeFileSync(path.join(out, ".htaccess"), apacheConfig(Boolean(data.site?.forceHttps)));
 }
 
 if (require.main === module) build();

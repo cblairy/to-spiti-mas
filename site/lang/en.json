@@ -81,7 +81,6 @@
   "contact.faq_linen_q": "Is linen provided?",
   "contact.faq_linen_a": "Yes, bed linen and bath towels are provided. <span class=\"todo\">[Beach towels: yes or no?]</span>",
   "contact.faq_baby_q": "Can we come with a baby?",
-  "contact.faq_baby_a": "Of course. <span class=\"todo\">[Cot and high chair available on request?]</span> Please take care with the stairs and raised terraces with young children.",
   "contact.faq_cleaning_q": "Is the house cleaned during the stay?",
   "contact.faq_cleaning_a": "Cleaning during your stay is available on request. <span class=\"todo\">[Price]</span>",
   "contact.faq_wifi_q": "Can I work remotely?",
@@ -101,7 +100,6 @@
   "contact.f_child_more": "Add a child",
   "contact.sum_nights": "{n} nights",
   "contact.sum_guests": "{n} guests",
-  "contact.sum_too_many": "Maximum 8 guests",
   "contact.sum_min": "Minimum stay: {n} nights",
   "contact.sum_order": "The departure date must be after the arrival date",
   "contact.sum_closed": "The house is available from {open} to {close}",
@@ -406,8 +404,6 @@
   "house.eq_comfort_1": "Ceiling fans",
   "house.eq_comfort_2": "Mosquito screens",
   "house.eq_comfort_3": "Bed linen and towels",
-  "house.eq_comfort_4": "Wi-Fi",
-  "house.eq_comfort_5": "Television",
   "house.eq_comfort_6": "Books and workspace",
   "house.eq_practical": "Practical",
   "house.eq_practical_1": "Washing machine and clothes airer",
@@ -476,5 +472,9 @@
   "legal.photos_text3": "The photos of the house belong to the owners. Any reproduction requires their permission. The photos of the sites and beaches on the Ios &amp; Kampos page, and the photo of the port on the Practical info page, are published under a free licence by their authors:",
   "contact.step3_text2": "Paying a deposit of {{percent:payment.deposit}} of the stay price confirms the booking. The balance is due {{value:payment.balanceDaysBefore}} days before arrival.",
   "legal.hosting_text2": "OVH SAS, 2 rue Kellermann, 59100 Roubaix, France.<br>Phone: 1007 from France, or +33&nbsp;9&nbsp;72&nbsp;10&nbsp;10&nbsp;07.<br>Website: <a href=\"https://www.ovhcloud.com\">ovhcloud.com</a>",
-  "ios.mylopotas_alt2": "Mylopotas bay, its long beach and white houses"
+  "ios.mylopotas_alt2": "Mylopotas bay, its long beach and white houses",
+  "contact.guest_warning": "The house sleeps 8 guests at most. If you are more, tell us in your message and we will see together what is possible.",
+  "house.eq_comfort_7": "Baby cot",
+  "contact.faq_baby_a2": "Of course, a baby cot is available. <span class=\"todo\">[High chair available?]</span> Please take care with the stairs and raised terraces with young children.",
+  "house.eq_comfort_tv_wifi": "Wi-Fi and TV"
 }

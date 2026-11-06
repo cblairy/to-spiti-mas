@@ -4,3 +4,4 @@ admin/.deploy-manifest.json
 site/lang/fr.json
 node_modules/
 .DS_Store
+.dist-*/

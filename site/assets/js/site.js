@@ -127,6 +127,7 @@
         var status = form.querySelector("[data-status]");
         var minNights = parseInt(form.getAttribute("data-min-nights"), 10) || 0;
         var maxGuests = 8;
+        var guestWarning = form.querySelector("[data-guest-warning]");
 
         function text(element, name, value) {
             return element.getAttribute("data-text-" + name).replace("{n}", value);
@@ -165,7 +166,7 @@
             var guests = parseInt(adults.value, 10) + parseInt(children.value, 10);
             var message = "";
             departure.setCustomValidity("");
-            children.setCustomValidity("");
+            guestWarning.hidden = guests <= maxGuests;
 
             if (arrival.value) departure.min = arrival.value;
 
@@ -178,9 +179,6 @@
             } else if (nights !== null && minNights && nights < minNights) {
                 message = text(summary, "min", minNights);
                 departure.setCustomValidity(message);
-            } else if (guests > maxGuests) {
-                message = text(summary, "too-many");
-                children.setCustomValidity(message);
             } else if (nights !== null) {
                 message = text(summary, "nights", nights) + ", " + text(summary, "guests", guests);
             }
@@ -189,16 +187,12 @@
 
         var steppers = Array.prototype.slice.call(form.querySelectorAll(".stepper-btn"));
 
-        function guestCount() {
-            return (parseInt(adults.value, 10) || 0) + (parseInt(children.value, 10) || 0);
-        }
-
         function refreshSteppers() {
             steppers.forEach(function (button) {
                 var input = form.querySelector("#" + button.getAttribute("aria-controls"));
                 var value = parseInt(input.value, 10) || 0;
                 var blocked = button.getAttribute("data-step") === "1"
-                    ? value >= parseInt(input.max, 10) || guestCount() >= maxGuests
+                    ? value >= parseInt(input.max, 10)
                     : value <= parseInt(input.min, 10);
                 button.setAttribute("aria-disabled", String(blocked));
             });
@@ -277,4 +271,46 @@
     }
 
     playPanoramaWhenVisible();
+
+    function prefetchOnIntent() {
+        if (HTMLScriptElement.supports && HTMLScriptElement.supports("speculationrules")) return;
+        var done = {};
+        function prefetch(event) {
+            var link = event.target.closest && event.target.closest("a[href]");
+            if (!link || link.hasAttribute("hreflang") || link.target || link.origin !== location.origin || done[link.href]) return;
+            done[link.href] = true;
+            var hint = document.createElement("link");
+            hint.rel = "prefetch";
+            hint.href = link.href;
+            document.head.appendChild(hint);
+        }
+        document.addEventListener("pointerover", prefetch, { passive: true });
+        document.addEventListener("touchstart", prefetch, { passive: true });
+    }
+
+    prefetchOnIntent();
+
+    function preloadHeroOnIntent() {
+        var data = document.getElementById("page-heroes");
+        if (!data) return;
+        var heroes = JSON.parse(data.textContent);
+        var loaded = {};
+        function preload(event) {
+            var link = event.target.closest && event.target.closest("a[href]");
+            if (!link || link.origin !== location.origin || link.hasAttribute("hreflang")) return;
+            var page = link.pathname.split("/").pop() || "index.html";
+            var hero = heroes[page];
+            if (!hero || loaded[page]) return;
+            loaded[page] = new Image();
+            if (hero.sizes) loaded[page].sizes = hero.sizes;
+            if (hero.srcset) loaded[page].srcset = hero.srcset;
+            loaded[page].src = hero.src;
+        }
+        document.addEventListener("pointerover", preload, { passive: true });
+        document.addEventListener("touchstart", preload, { passive: true });
+        document.addEventListener("focusin", preload);
+    }
+
+    preloadHeroOnIntent();
+
 })();
