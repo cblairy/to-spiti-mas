@@ -1,0 +1,697 @@
+/* style.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: #ffffff;
+    color: #1f3973;
+    overflow-x: hidden;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    height: 80px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    z-index: 1000;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+}
+
+.logo {
+    position: absolute;
+    top: 16px;
+    left: 28px;
+    width: 135px;
+    z-index: 1001;
+}
+
+.logo img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 42px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #1f3973;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    opacity: 0.7;
+}
+
+/* =========================
+   LANGUES
+========================= */
+
+.language-selector {
+    position: absolute;
+    right: 190px;
+    top: 40px;
+}
+
+.language-btn {
+    color: #1f3973;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.language-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+
+    margin-top: 0;
+
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+
+    width: 150px;
+    padding: 10px;
+
+    display: none;
+
+    z-index: 3000;
+}
+
+.language-selector:hover .language-dropdown {
+    display: block;
+}
+
+.language-dropdown div {
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.language-dropdown div:hover {
+    background: #f4f4f4;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.reserve-btn {
+    position: absolute;
+    right: 34px;
+    background: #1f3973;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 4px;
+    text-decoration: none;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.reserve-btn:hover {
+    background: #162c59;
+}
+
+/* =========================
+   HERO
+========================= */
+
+/* HERO */
+
+.hero {
+    position: relative;
+    height: 82vh; /* hauteur du hero */
+    overflow: hidden;
+}
+
+
+.hero-image {
+    width: 100%;
+    height: 82vh;/* hauteur de l'image dans le hero */
+    object-fit: cover;
+    object-position: center 48%; /* Remonte l'image + grand = plus haut*/
+    display: block;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 28%; /* Remonte le texte + petit = plus haut */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+    color: #1d3c78;
+}
+
+.hero-overlay h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 7rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.hero-overlay h2 {
+    font-size: 1.2rem;
+    letter-spacing: 7px;
+    font-weight: 300;
+    margin-bottom: 22px;
+}
+
+.hero-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.hero-divider span {
+    width: 60px;
+    height: 1px;
+    background: #1d3c78;
+}
+
+.hero-divider img {
+    width: 80px; /*taille de la branche d'olivier*/
+    height: auto;
+}
+
+.hero-overlay p {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 2rem;
+}
+
+/* =========================
+   FEATURES
+========================= */
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    background: #f8f7f4;
+    border-top: 1px solid #e8e1d8;
+
+    border-right: 1px solid #e8e2d8;
+    padding: 0 20px;
+
+}
+.feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    border-right: 1px solid #e8e2d8;
+    padding: 5px 20px;
+}
+
+.feature:last-child {
+    border-right: none;
+}
+
+.feature-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #1f3973;
+}
+
+.feature p {
+    font-size: 0.92rem;
+    line-height: 1.45;
+    letter-spacing: 0.4px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #ffffff;
+    border-top: 1px solid #ece7df;
+    padding: 15px 40px; /* Le premier chiffre  = hauteur haut/bas du bloc.*/
+}
+
+.footer-bottom {
+    height: 22px;
+    min-height: 22px;
+
+    padding: 0 60px; /* Le premier chiffre  = hauteur haut/bas du bloc.*/
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    line-height: 1;
+}
+
+.footer-bottom * {
+    margin: 0;
+    padding: 0;
+}
+
+.footer-bottom a {
+    color: #1f3973;
+    text-decoration: none;
+}
+
+.footer-bottom a:hover {
+    text-decoration: underline;
+}
+html, body {
+    overflow-x: hidden;
+}
+
+                          /* =========================
+                                PAGE LA MAISON
+                          ========================= */
+
+.house-page{
+    background:#ffffff;
+    color:#1f3973;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.house-hero{
+    position:relative;
+    height:80vh;
+    overflow:hidden;
+    margin-top:80px;
+}
+
+.hero-bg{
+    width:102%;
+    height:102%;
+
+    object-fit:cover;
+    object-position:center 38%;
+
+    display:block;
+
+    animation: heroPan 18s ease-in-out infinite alternate;
+}
+
+.house-hero-overlay{
+    position:absolute;
+    top:38%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:100%;
+    text-align:center;
+    color:white;
+}
+
+.house-hero-overlay h1{
+    font-family:'Cormorant Garamond', serif;
+    font-size:6rem;
+    font-weight:400;
+    letter-spacing:4px;
+    margin-bottom:10px;
+}
+
+.house-hero-overlay p{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1.6rem;
+}
+
+/* =========================
+   DIVIDER
+========================= */
+
+.hero-divider{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:20px;
+    margin-bottom:20px;
+}
+
+.hero-divider span{
+    width:70px;
+    height:1px;
+    background:white;
+}
+
+.hero-divider img{
+    width:52px;
+    height:auto;
+}
+
+/* =========================
+   INTRO
+========================= */
+
+.intro-section{
+    padding:120px 10%;
+    background:#ffffff;
+}
+
+.intro-container{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:90px;
+    align-items:start;
+}
+
+.intro-text h2{
+    font-family:'Cormorant Garamond', serif;
+    font-size:3rem;
+    font-weight:400;
+    margin-bottom:30px;
+}
+
+.intro-text p{
+    font-size:1rem;
+    line-height:1.9;
+    margin-bottom:22px;
+    color:#50607c;
+}
+
+.intro-details{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:35px;
+}
+
+.detail{
+    text-align:center;
+    padding:30px 20px;
+    border:1px solid #ece7df;
+}
+
+.detail span{
+    display:block;
+    font-family:'Cormorant Garamond', serif;
+    font-size:2.6rem;
+    margin-bottom:10px;
+}
+
+.detail p{
+    text-transform:uppercase;
+    font-size:0.8rem;
+    letter-spacing:2px;
+}
+
+/* =========================
+   ROOMS
+========================= */
+
+.room-section{
+    display:grid;
+    grid-template-columns:1.1fr 1fr;
+    align-items:center;
+    min-height:720px;
+}
+
+.room-section.reverse{
+    grid-template-columns:1fr 1.1fr;
+}
+
+.room-section.reverse .room-image{
+    order:2;
+}
+
+.room-section.reverse .room-content{
+    order:1;
+}
+
+.room-image img{
+    width:100%;
+    height:720px;
+    object-fit:cover;
+    display:block;
+}
+
+.room-content{
+    padding:0 90px;
+}
+
+.room-content h2{
+    font-family:'Cormorant Garamond', serif;
+    font-size:3rem;
+    font-weight:400;
+    margin-bottom:25px;
+}
+
+.room-content p{
+    font-size:1rem;
+    line-height:1.9;
+    color:#50607c;
+    margin-bottom:30px;
+}
+
+.room-content ul{
+    list-style:none;
+}
+
+.room-content li{
+    margin-bottom:14px;
+    font-size:0.95rem;
+    letter-spacing:1px;
+}
+
+/* =========================
+   LIFESTYLE
+========================= */
+
+.lifestyle-section{
+    display:grid;
+    grid-template-columns:1.1fr 1fr;
+    align-items:center;
+    background:#faf8f4;
+}
+
+.lifestyle-image img{
+    width:100%;
+    height:700px;
+    object-fit:cover;
+    display:block;
+}
+
+.lifestyle-text{
+    padding:0 90px;
+}
+
+.lifestyle-text h2{
+    font-family:'Cormorant Garamond', serif;
+    font-size:3rem;
+    margin-bottom:30px;
+    font-weight:400;
+}
+
+.lifestyle-text p{
+    font-size:1rem;
+    line-height:1.9;
+    margin-bottom:22px;
+    color:#50607c;
+}
+
+/* =========================
+   QUOTE SECTION
+========================= */
+
+.quote-section{
+    position:relative;
+    height:70vh;
+    overflow:hidden;
+}
+
+.quote-section img{
+    width:100%;
+    height:70vh;
+    object-fit:cover;
+    object-position:center center;
+}
+
+.quote-overlay{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(0,0,0,0.18);
+}
+
+.quote-overlay h2{
+    font-family:'Cormorant Garamond', serif;
+    font-size:4rem;
+    color:white;
+    font-weight:400;
+    letter-spacing:2px;
+}
+
+/* =========================
+   OUTDOOR
+========================= */
+
+.outdoor-section{
+    padding:120px 8%;
+    background:white;
+}
+
+.outdoor-header{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.outdoor-header h2{
+    font-family:'Cormorant Garamond', serif;
+    font-size:3.2rem;
+    font-weight:400;
+    margin-bottom:20px;
+}
+
+.outdoor-header p{
+    color:#50607c;
+    line-height:1.8;
+}
+
+.outdoor-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+}
+
+.outdoor-grid img{
+    width:100%;
+    height:480px;
+    object-fit:cover;
+    display:block;
+}
+
+/* =========================
+   EQUIPEMENTS
+========================= */
+
+.equipment-section{
+    padding:120px 10%;
+    background:#faf8f4;
+    text-align:center;
+}
+
+.equipment-section h2{
+    font-family:'Cormorant Garamond', serif;
+    font-size:3rem;
+    font-weight:400;
+    margin-bottom:60px;
+}
+
+.equipment-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:22px;
+    max-width:900px;
+    margin:0 auto;
+}
+
+.equipment-grid div{
+    padding:24px;
+    border:1px solid #e9e3d9;
+    background:white;
+    font-size:0.95rem;
+    letter-spacing:1px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1100px){
+
+    .intro-container,
+    .room-section,
+    .room-section.reverse,
+    .lifestyle-section{
+        grid-template-columns:1fr;
+    }
+
+    .room-section.reverse .room-image,
+    .room-section.reverse .room-content{
+        order:initial;
+    }
+
+    .room-content,
+    .lifestyle-text{
+        padding:80px 10%;
+    }
+
+    .room-image img,
+    .lifestyle-image img{
+        height:520px;
+    }
+
+    .outdoor-grid{
+        grid-template-columns:1fr;
+    }
+
+    .equipment-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:700px){
+
+    .house-hero-overlay h1{
+        font-size:3.8rem;
+    }
+
+    .quote-overlay h2{
+        font-size:2.5rem;
+    }
+
+    .intro-text h2,
+    .room-content h2,
+    .lifestyle-text h2,
+    .outdoor-header h2,
+    .equipment-section h2{
+        font-size:2.3rem;
+    }
+
+}
+@keyframes heroPan {
+
+    0%{
+        transform: scale(1) translateX(0px);
+    }
+
+    50%{
+        transform: scale(1.03) translateX(-20px);
+    }
+
+    100%{
+        transform: scale(1) translateX(20px);
+    }
+
+}

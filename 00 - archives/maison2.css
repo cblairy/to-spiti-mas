@@ -1,0 +1,230 @@
+main{
+    margin-top:80px;
+}
+
+/* HERO */
+
+.house-hero{
+    position:relative;
+    height:85vh;
+    overflow:hidden;
+}
+
+.house-hero img{
+    width:110%;
+    height:100%;
+    object-fit:cover;
+    animation: heroMove 30s ease-in-out infinite alternate;
+}
+
+@keyframes heroMove{
+    from{
+        transform:translateX(0);
+    }
+    to{
+        transform:translateX(-5%);
+    }
+}
+
+.hero-content{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+    color:white;
+}
+
+.hero-content h1{
+    font-family:'Cormorant Garamond';
+    font-size:6rem;
+    font-weight:300;
+}
+
+.hero-content p{
+    font-size:1.2rem;
+    font-style:italic;
+}
+
+/* GENERIQUE */
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:80px 40px;
+}
+
+h2{
+    font-family:'Cormorant Garamond';
+    font-size:3rem;
+    color:#1f3f7c;
+    margin-bottom:30px;
+}
+
+p{
+    line-height:1.9;
+}
+
+/* PHOTO BLOCK */
+
+.photo-block{
+    max-width:1300px;
+    margin:120px auto;
+    position:relative;
+}
+
+.photo-large img{
+    width:75%;
+    border-radius:18px;
+}
+
+.photo-small{
+    position:absolute;
+    width:220px;
+}
+
+.photo-small img{
+    width:100%;
+    border-radius:18px;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+
+.top{
+    right:120px;
+    top:80px;
+}
+
+.bottom{
+    right:50px;
+    bottom:50px;
+}
+
+.text-block{
+    max-width:500px;
+    margin-top:30px;
+}
+
+/* ALTERNATE */
+
+.alternate{
+    padding:120px 40px;
+    background:#faf8f4;
+}
+
+.content{
+    max-width:1300px;
+    margin:auto;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:20px;
+    margin-top:50px;
+}
+
+.gallery img{
+    width:100%;
+    height:420px;
+    object-fit:cover;
+    border-radius:18px;
+}
+
+/* JARDIN */
+
+.garden{
+    padding:120px 40px;
+    text-align:center;
+}
+
+.garden img{
+    width:100%;
+    max-width:1000px;
+    border-radius:18px;
+    margin:40px 0;
+}
+
+/* CHAMBRES */
+
+.rooms{
+    padding:120px 40px;
+    max-width:1300px;
+    margin:auto;
+}
+
+.room{
+    display:flex;
+    align-items:center;
+    gap:60px;
+    margin-bottom:100px;
+}
+
+.room img{
+    width:50%;
+    border-radius:18px;
+}
+
+.reverse{
+    flex-direction:row-reverse;
+}
+
+/* INTERIEUR */
+
+.interior{
+    background:#faf8f4;
+}
+
+.interior-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+
+.interior-grid img{
+    width:100%;
+    border-radius:18px;
+}
+
+/* EQUIPEMENTS */
+
+.equipments{
+    padding:120px 40px;
+    text-align:center;
+}
+
+.equip-grid{
+    max-width:1000px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:30px;
+}
+
+.equip-grid div{
+    padding:20px;
+    border:1px solid #eee;
+    border-radius:15px;
+}
+
+/* CTA */
+
+.final-cta{
+    padding:150px 40px;
+    text-align:center;
+    background:#1f3f7c;
+    color:white;
+}
+
+.final-cta h2{
+    color:white;
+}
+
+.btn-reserve{
+    display:inline-block;
+    margin-top:30px;
+    padding:15px 35px;
+    background:white;
+    color:#1f3f7c;
+    text-decoration:none;
+    border-radius:6px;
+}

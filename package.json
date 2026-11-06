@@ -1,0 +1,12 @@
+{
+  "name": "to-spiti-mas",
+  "private": true,
+  "description": "Site de la maison To Spiti Mas à Ios",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node serve.js",
+    "build": "node build.js"
+  }
+}
