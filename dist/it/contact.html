@@ -91,7 +91,7 @@
                 </li>
                 <li>
                     <h3>Confermate</h3>
-                    <p>Il versamento dell'acconto conferma la prenotazione. <span class="todo">[Importo dell'acconto e metodo di pagamento]</span></p>
+                    <p>Il versamento di un acconto del 30% del prezzo del soggiorno conferma la prenotazione. Il saldo va versato 30 giorni prima dell'arrivo.</p>
                 </li>
             </ol>
 
@@ -101,11 +101,12 @@
     <section class="section section--sand" id="demande">
         <div class="wrap booking">
 
-            <form class="form" action="https://api.web3forms.com/submit" method="POST" data-booking-form data-min-nights="">
+            <form class="form" action="https://api.web3forms.com/submit" method="POST" data-booking-form data-min-nights="4" data-open="2027-04-15" data-close="2027-10-15">
 
                 <h2 class="field--full">La vostra richiesta</h2>
+                <p class="field--full form-season">La casa si affitta dal 15 aprile 2027 al 15 ottobre 2027.</p>
 
-                <input type="hidden" name="access_key" value="VOTRE_CLE_WEB3FORMS">
+                <input type="hidden" name="access_key" value="">
                 <input type="hidden" name="subject" value="Nouvelle demande de réservation, To Spiti Mas">
                 <input type="hidden" name="from_name" value="Site To Spiti Mas">
                 <input type="hidden" name="langue" value="it">
@@ -145,6 +146,8 @@
                    data-text-too-many="Massimo 8 ospiti"
                    data-text-min="Soggiorno minimo: {n} notti"
                    data-text-order="La data di partenza deve seguire la data di arrivo"
+                   data-text-closed="La casa si affitta dal {open} al {close}"
+                  
                   
                   
                   
@@ -236,23 +239,23 @@
                         <tr>
                             <th scope="row">Bassa stagione</th>
                             <td>Aprile, maggio e ottobre</td>
-                            <td><span class="todo">[… €]</span></td>
-                            <td><span class="todo">[… €]</span></td>
-                            <td><span class="todo">[… notti]</span></td>
+                            <td>290 €</td>
+                            <td>1990 €</td>
+                            <td>4 notti</td>
                         </tr>
                         <tr>
                             <th scope="row">Media stagione</th>
                             <td>Giugno e settembre</td>
-                            <td><span class="todo">[… €]</span></td>
-                            <td><span class="todo">[… €]</span></td>
-                            <td><span class="todo">[… notti]</span></td>
+                            <td>400 €</td>
+                            <td>2750 €</td>
+                            <td>4 notti</td>
                         </tr>
                         <tr>
                             <th scope="row">Alta stagione</th>
                             <td>Luglio e agosto</td>
-                            <td><span class="todo">[… €]</span></td>
-                            <td><span class="todo">[… €]</span></td>
-                            <td><span class="todo">[… notti]</span></td>
+                            <td>510 €</td>
+                            <td>3690 €</td>
+                            <td>4 notti</td>
                         </tr>
                     </tbody>
                 </table>
@@ -275,8 +278,8 @@
                 <div class="info-block">
                     <h3>Arrivo e partenza</h3>
                     <ul>
-                        <li><strong>Arrivo</strong> dalle <span class="todo">[16:00]</span></li>
-                        <li><strong>Partenza</strong> entro le <span class="todo">[10:00]</span></li>
+                        <li><strong>Arrivo</strong> dalle 16:00</li>
+                        <li><strong>Partenza</strong> entro le 10:00</li>
                         <li><strong>Chiavi</strong> arrivo autonomo con cassetta portachiavi di sicurezza</li>
                         <li><strong>Bagagli</strong> <span class="todo">[possibilità di lasciarli prima dell'arrivo o dopo la partenza?]</span></li>
                     </ul>
@@ -285,10 +288,10 @@
                 <div class="info-block">
                     <h3>Pagamento e cancellazione</h3>
                     <ul>
-                        <li><strong>Acconto</strong> <span class="todo">[30%]</span> alla prenotazione</li>
-                        <li><strong>Saldo</strong> <span class="todo">[30 giorni]</span> prima dell'arrivo</li>
-                        <li><strong>Cauzione</strong> <span class="todo">[importo, restituita entro … giorni]</span></li>
-                        <li><strong>Cancellazione</strong> <span class="todo">[condizioni di rimborso]</span></li>
+                        <li><strong>Acconto</strong> 30% alla prenotazione</li>
+                        <li><strong>Saldo</strong> 30 giorni prima dell'arrivo</li>
+                        <li><strong>Cauzione</strong> 500 €, restituita entro 7 giorni</li>
+                        <li><strong>Cancellazione</strong> gratuita fino a 30 giorni prima dell'arrivo</li>
                     </ul>
                 </div>
 

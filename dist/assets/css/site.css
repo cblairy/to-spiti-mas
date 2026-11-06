@@ -1835,3 +1835,8 @@ main {
     color: #c9c1b2;
     cursor: default;
 }
+
+.form-season {
+    margin-top: -8px;
+    font-size: 0.92rem;
+}

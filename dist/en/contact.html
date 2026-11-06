@@ -91,7 +91,7 @@
                 </li>
                 <li>
                     <h3>You confirm</h3>
-                    <p>Paying the deposit confirms your booking. <span class="todo">[Deposit amount and payment method]</span></p>
+                    <p>Paying a deposit of 30% of the stay price confirms the booking. The balance is due 30 days before arrival.</p>
                 </li>
             </ol>
 
@@ -101,11 +101,12 @@
     <section class="section section--sand" id="demande">
         <div class="wrap booking">
 
-            <form class="form" action="https://api.web3forms.com/submit" method="POST" data-booking-form data-min-nights="">
+            <form class="form" action="https://api.web3forms.com/submit" method="POST" data-booking-form data-min-nights="4" data-open="2027-04-15" data-close="2027-10-15">
 
                 <h2 class="field--full">Your request</h2>
+                <p class="field--full form-season">The house is available from 15 April 2027 to 15 October 2027.</p>
 
-                <input type="hidden" name="access_key" value="VOTRE_CLE_WEB3FORMS">
+                <input type="hidden" name="access_key" value="">
                 <input type="hidden" name="subject" value="Nouvelle demande de réservation, To Spiti Mas">
                 <input type="hidden" name="from_name" value="Site To Spiti Mas">
                 <input type="hidden" name="langue" value="en">
@@ -145,6 +146,8 @@
                    data-text-too-many="Maximum 8 guests"
                    data-text-min="Minimum stay: {n} nights"
                    data-text-order="The departure date must be after the arrival date"
+                   data-text-closed="The house is available from {open} to {close}"
+                  
                   
                   
                   
@@ -236,23 +239,23 @@
                         <tr>
                             <th scope="row">Low season</th>
                             <td>April, May and October</td>
-                            <td><span class="todo">[… €]</span></td>
-                            <td><span class="todo">[… €]</span></td>
-                            <td><span class="todo">[… nights]</span></td>
+                            <td>€290</td>
+                            <td>€1,990</td>
+                            <td>4 nights</td>
                         </tr>
                         <tr>
                             <th scope="row">Mid season</th>
                             <td>June and September</td>
-                            <td><span class="todo">[… €]</span></td>
-                            <td><span class="todo">[… €]</span></td>
-                            <td><span class="todo">[… nights]</span></td>
+                            <td>€400</td>
+                            <td>€2,750</td>
+                            <td>4 nights</td>
                         </tr>
                         <tr>
                             <th scope="row">High season</th>
                             <td>July and August</td>
-                            <td><span class="todo">[… €]</span></td>
-                            <td><span class="todo">[… €]</span></td>
-                            <td><span class="todo">[… nights]</span></td>
+                            <td>€510</td>
+                            <td>€3,690</td>
+                            <td>4 nights</td>
                         </tr>
                     </tbody>
                 </table>
@@ -275,8 +278,8 @@
                 <div class="info-block">
                     <h3>Check-in and check-out</h3>
                     <ul>
-                        <li><strong>Check-in</strong> from <span class="todo">[4 pm]</span></li>
-                        <li><strong>Check-out</strong> by <span class="todo">[10 am]</span></li>
+                        <li><strong>Check-in</strong> from 16:00</li>
+                        <li><strong>Check-out</strong> by 10:00</li>
                         <li><strong>Keys</strong> self check-in with a secure key box</li>
                         <li><strong>Luggage</strong> <span class="todo">[can it be left before check-in or after check-out?]</span></li>
                     </ul>
@@ -285,10 +288,10 @@
                 <div class="info-block">
                     <h3>Payment and cancellation</h3>
                     <ul>
-                        <li><strong>Deposit</strong> <span class="todo">[30%]</span> on booking</li>
-                        <li><strong>Balance</strong> <span class="todo">[30 days]</span> before arrival</li>
-                        <li><strong>Security deposit</strong> <span class="todo">[amount, returned within … days]</span></li>
-                        <li><strong>Cancellation</strong> <span class="todo">[refund policy]</span></li>
+                        <li><strong>Deposit</strong> 30% on booking</li>
+                        <li><strong>Balance</strong> 30 days before arrival</li>
+                        <li><strong>Security deposit</strong> €500, returned within 7 days</li>
+                        <li><strong>Cancellation</strong> free up to 30 days before arrival</li>
                     </ul>
                 </div>
 

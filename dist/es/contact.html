@@ -91,7 +91,7 @@
                 </li>
                 <li>
                     <h3>Usted confirma</h3>
-                    <p>El pago del anticipo confirma la reserva. <span class="todo">[Importe del anticipo y forma de pago]</span></p>
+                    <p>El pago de un anticipo del 30 % del precio de la estancia confirma la reserva. El resto se abona 30 días antes de la llegada.</p>
                 </li>
             </ol>
 
@@ -101,11 +101,12 @@
     <section class="section section--sand" id="demande">
         <div class="wrap booking">
 
-            <form class="form" action="https://api.web3forms.com/submit" method="POST" data-booking-form data-min-nights="">
+            <form class="form" action="https://api.web3forms.com/submit" method="POST" data-booking-form data-min-nights="4" data-open="2027-04-15" data-close="2027-10-15">
 
                 <h2 class="field--full">Su solicitud</h2>
+                <p class="field--full form-season">La casa se alquila del 15 de abril de 2027 al 15 de octubre de 2027.</p>
 
-                <input type="hidden" name="access_key" value="VOTRE_CLE_WEB3FORMS">
+                <input type="hidden" name="access_key" value="">
                 <input type="hidden" name="subject" value="Nouvelle demande de réservation, To Spiti Mas">
                 <input type="hidden" name="from_name" value="Site To Spiti Mas">
                 <input type="hidden" name="langue" value="es">
@@ -145,6 +146,8 @@
                    data-text-too-many="Máximo 8 viajeros"
                    data-text-min="Estancia mínima: {n} noches"
                    data-text-order="La fecha de salida debe ser posterior a la de llegada"
+                   data-text-closed="La casa se alquila del {open} al {close}"
+                  
                   
                   
                   
@@ -236,23 +239,23 @@
                         <tr>
                             <th scope="row">Temporada baja</th>
                             <td>Abril, mayo y octubre</td>
-                            <td><span class="todo">[… €]</span></td>
-                            <td><span class="todo">[… €]</span></td>
-                            <td><span class="todo">[… noches]</span></td>
+                            <td>290 €</td>
+                            <td>1990 €</td>
+                            <td>4 noches</td>
                         </tr>
                         <tr>
                             <th scope="row">Temporada media</th>
                             <td>Junio y septiembre</td>
-                            <td><span class="todo">[… €]</span></td>
-                            <td><span class="todo">[… €]</span></td>
-                            <td><span class="todo">[… noches]</span></td>
+                            <td>400 €</td>
+                            <td>2750 €</td>
+                            <td>4 noches</td>
                         </tr>
                         <tr>
                             <th scope="row">Temporada alta</th>
                             <td>Julio y agosto</td>
-                            <td><span class="todo">[… €]</span></td>
-                            <td><span class="todo">[… €]</span></td>
-                            <td><span class="todo">[… noches]</span></td>
+                            <td>510 €</td>
+                            <td>3690 €</td>
+                            <td>4 noches</td>
                         </tr>
                     </tbody>
                 </table>
@@ -275,8 +278,8 @@
                 <div class="info-block">
                     <h3>Llegada y salida</h3>
                     <ul>
-                        <li><strong>Llegada</strong> a partir de las <span class="todo">[16:00]</span></li>
-                        <li><strong>Salida</strong> antes de las <span class="todo">[10:00]</span></li>
+                        <li><strong>Llegada</strong> a partir de las 16:00</li>
+                        <li><strong>Salida</strong> antes de las 10:00</li>
                         <li><strong>Llaves</strong> llegada autónoma con caja de seguridad para llaves</li>
                         <li><strong>Equipaje</strong> <span class="todo">[¿se puede dejar antes de la llegada o después de la salida?]</span></li>
                     </ul>
@@ -285,10 +288,10 @@
                 <div class="info-block">
                     <h3>Pago y cancelación</h3>
                     <ul>
-                        <li><strong>Anticipo</strong> <span class="todo">[30 %]</span> al reservar</li>
-                        <li><strong>Resto</strong> <span class="todo">[30 días]</span> antes de la llegada</li>
-                        <li><strong>Fianza</strong> <span class="todo">[importe, devuelta en … días]</span></li>
-                        <li><strong>Cancelación</strong> <span class="todo">[condiciones de reembolso]</span></li>
+                        <li><strong>Anticipo</strong> 30 % al reservar</li>
+                        <li><strong>Resto</strong> 30 días antes de la llegada</li>
+                        <li><strong>Fianza</strong> 500 €, devuelta en un plazo de 7 días</li>
+                        <li><strong>Cancelación</strong> gratuita hasta 30 días antes de la llegada</li>
                     </ul>
                 </div>
 

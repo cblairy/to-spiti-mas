@@ -1,0 +1,40 @@
+{
+  "site": {
+    "url": "https://www.tospitimas.fr",
+    "forceHttps": true
+  },
+  "booking": {
+    "open": "2027-04-15",
+    "close": "2027-10-15"
+  },
+  "seasons": {
+    "low": {
+      "night": 290,
+      "week": 1990,
+      "minNights": 4
+    },
+    "mid": {
+      "night": 400,
+      "week": 2750,
+      "minNights": 4
+    },
+    "high": {
+      "night": 510,
+      "week": 3690,
+      "minNights": 4
+    }
+  },
+  "checkin": "16:00",
+  "checkout": "10:00",
+  "payment": {
+    "deposit": 30,
+    "balanceDaysBefore": 30,
+    "securityDeposit": 500,
+    "securityDepositReturnDays": 7,
+    "freeCancellationDays": 30
+  },
+  "form": {
+    "web3formsKey": null,
+    "minNights": 4
+  }
+}

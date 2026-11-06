@@ -38,7 +38,7 @@
                 </li>
                 <li>
                     <h3 data-i18n="contact.step3_title">Vous confirmez</h3>
-                    <p data-i18n="contact.step3_text">Le versement de l'acompte confirme la réservation. <span class="todo">[Montant de l'acompte et moyen de paiement]</span></p>
+                    <p data-i18n="contact.step3_text2">Le versement d'un acompte de {{percent:payment.deposit}} du prix du séjour confirme la réservation. Le solde est à régler {{value:payment.balanceDaysBefore}} jours avant l'arrivée.</p>
                 </li>
             </ol>
 
@@ -48,11 +48,12 @@
     <section class="section section--sand" id="demande">
         <div class="wrap booking">
 
-            <form class="form" action="https://api.web3forms.com/submit" method="POST" data-booking-form data-min-nights="">
+            <form class="form" action="https://api.web3forms.com/submit" method="POST" data-booking-form data-min-nights="{{attr:form.minNights}}" data-open="{{attr:booking.open}}" data-close="{{attr:booking.close}}">
 
                 <h2 class="field--full" data-i18n="contact.form_title">Votre demande</h2>
+                <p class="field--full form-season" data-i18n="contact.season_dates">La maison se loue du {{date:booking.open}} au {{date:booking.close}}.</p>
 
-                <input type="hidden" name="access_key" value="VOTRE_CLE_WEB3FORMS">
+                <input type="hidden" name="access_key" value="{{attr:form.web3formsKey}}">
                 <input type="hidden" name="subject" value="Nouvelle demande de réservation, To Spiti Mas">
                 <input type="hidden" name="from_name" value="Site To Spiti Mas">
                 <input type="hidden" name="langue" value="{{lang}}">
@@ -92,11 +93,13 @@
                    data-text-too-many="Maximum 8 voyageurs"
                    data-text-min="Séjour minimum : {n} nuits"
                    data-text-order="La date de départ doit suivre la date d'arrivée"
+                   data-text-closed="La maison se loue du {open} au {close}"
                    data-i18n-data-text-nights="contact.sum_nights"
                    data-i18n-data-text-guests="contact.sum_guests"
                    data-i18n-data-text-too-many="contact.sum_too_many"
                    data-i18n-data-text-min="contact.sum_min"
-                   data-i18n-data-text-order="contact.sum_order"></p>
+                   data-i18n-data-text-order="contact.sum_order"
+                   data-i18n-data-text-closed="contact.sum_closed"></p>
 
                 <div class="field field--full">
                     <label for="nom" data-i18n="contact.f_name">Nom et prénom</label>
@@ -183,23 +186,23 @@
                         <tr>
                             <th scope="row" data-i18n="contact.season_low">Basse saison</th>
                             <td data-i18n="contact.period_low">Avril, mai et octobre</td>
-                            <td><span class="todo">[… €]</span></td>
-                            <td><span class="todo">[… €]</span></td>
-                            <td data-i18n="contact.min_low"><span class="todo">[… nuits]</span></td>
+                            <td>{{price:seasons.low.night}}</td>
+                            <td>{{price:seasons.low.week}}</td>
+                            <td data-i18n="contact.min_low">{{value:seasons.low.minNights}} nuits</td>
                         </tr>
                         <tr>
                             <th scope="row" data-i18n="contact.season_mid">Moyenne saison</th>
                             <td data-i18n="contact.period_mid">Juin et septembre</td>
-                            <td><span class="todo">[… €]</span></td>
-                            <td><span class="todo">[… €]</span></td>
-                            <td data-i18n="contact.min_mid"><span class="todo">[… nuits]</span></td>
+                            <td>{{price:seasons.mid.night}}</td>
+                            <td>{{price:seasons.mid.week}}</td>
+                            <td data-i18n="contact.min_mid">{{value:seasons.mid.minNights}} nuits</td>
                         </tr>
                         <tr>
                             <th scope="row" data-i18n="contact.season_high">Haute saison</th>
                             <td data-i18n="contact.period_high">Juillet et août</td>
-                            <td><span class="todo">[… €]</span></td>
-                            <td><span class="todo">[… €]</span></td>
-                            <td data-i18n="contact.min_high"><span class="todo">[… nuits]</span></td>
+                            <td>{{price:seasons.high.night}}</td>
+                            <td>{{price:seasons.high.week}}</td>
+                            <td data-i18n="contact.min_high">{{value:seasons.high.minNights}} nuits</td>
                         </tr>
                     </tbody>
                 </table>
@@ -222,8 +225,8 @@
                 <div class="info-block">
                     <h3 data-i18n="contact.checkin_title">Arrivée et départ</h3>
                     <ul>
-                        <li data-i18n="contact.checkin_1"><strong>Arrivée</strong> à partir de <span class="todo">[16 h]</span></li>
-                        <li data-i18n="contact.checkin_2"><strong>Départ</strong> avant <span class="todo">[10 h]</span></li>
+                        <li data-i18n="contact.checkin_1"><strong>Arrivée</strong> à partir de {{value:checkin}}</li>
+                        <li data-i18n="contact.checkin_2"><strong>Départ</strong> avant {{value:checkout}}</li>
                         <li data-i18n="contact.checkin_3"><strong>Clés</strong> arrivée autonome avec boîte à clé sécurisée</li>
                         <li data-i18n="contact.checkin_4"><strong>Bagages</strong> <span class="todo">[possibilité de les déposer avant l'arrivée ou après le départ ?]</span></li>
                     </ul>
@@ -232,10 +235,10 @@
                 <div class="info-block">
                     <h3 data-i18n="contact.payment_title">Paiement et annulation</h3>
                     <ul>
-                        <li data-i18n="contact.payment_1"><strong>Acompte</strong> <span class="todo">[30 %]</span> à la réservation</li>
-                        <li data-i18n="contact.payment_2"><strong>Solde</strong> <span class="todo">[30 jours]</span> avant l'arrivée</li>
-                        <li data-i18n="contact.payment_3"><strong>Caution</strong> <span class="todo">[montant, rendue sous … jours]</span></li>
-                        <li data-i18n="contact.payment_4"><strong>Annulation</strong> <span class="todo">[conditions de remboursement]</span></li>
+                        <li data-i18n="contact.payment_1"><strong>Acompte</strong> {{percent:payment.deposit}} à la réservation</li>
+                        <li data-i18n="contact.payment_2"><strong>Solde</strong> {{value:payment.balanceDaysBefore}} jours avant l'arrivée</li>
+                        <li data-i18n="contact.payment_3"><strong>Caution</strong> {{price:payment.securityDeposit}}, rendue sous {{value:payment.securityDepositReturnDays}} jours</li>
+                        <li data-i18n="contact.payment_4"><strong>Annulation</strong> gratuite jusqu'à {{value:payment.freeCancellationDays}} jours avant l'arrivée</li>
                     </ul>
                 </div>
 

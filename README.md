@@ -70,13 +70,37 @@ Les textes à compléter apparaissent en rose, entre crochets. Pour les retrouve
 grep -n 'class="todo"' src/*.html
 ```
 
+## Outil d'administration
+
+L'outil sert à modifier les informations qui changent souvent, à générer le site et à le publier chez OVH. Il tourne uniquement sur votre ordinateur et n'est jamais mis en ligne.
+
+```bash
+npm run admin
+```
+
+Sur Mac, un double-clic sur `to-spiti-mas-administration.command` fait la même chose. Sur Windows, utilisez `to-spiti-mas-administration.bat`.
+
+L'outil s'ouvre sur http://localhost:8090/. Il permet de modifier :
+
+- la période d'ouverture des réservations ;
+- les prix par saison et le séjour minimum ;
+- les heures d'arrivée et de départ ;
+- l'acompte, le solde et la caution ;
+- la clé Web3Forms ;
+- l'adresse du site et le HTTPS forcé.
+
+Les valeurs sont enregistrées dans `data/infos.json`. Le site les affiche dans les 5 langues, au format de chaque langue.
+
+Le bouton Publier sur OVH génère le site, puis envoie en FTP chiffré uniquement les fichiers modifiés. Le mot de passe FTP est demandé à chaque fois et n'est jamais enregistré. Les réglages FTP sont dans `deploy.config.json`, et la liste des fichiers déjà envoyés dans `.deploy-manifest.json`.
+
+Le guide pas à pas pour OVH est dans l'outil, en bas de la page.
+
 ## Formulaire de réservation
 
 Le formulaire envoie les demandes par e-mail avec Web3Forms, un service gratuit.
 
 1. Créez une clé sur https://web3forms.com avec l'adresse qui doit recevoir les demandes.
-2. Dans `src/contact.html`, remplacez `VOTRE_CLE_WEB3FORMS` par cette clé.
-3. Pour imposer un séjour minimum, indiquez le nombre de nuits dans `data-min-nights=""`.
+2. Saisissez cette clé dans l'outil d'administration, section Formulaire de demande.
 
 ## Mise en ligne
 
@@ -93,4 +117,4 @@ Une adresse inconnue affiche `404.html`, qui renvoie vers l'accueil dans la lang
 
 La page `404.html` suppose que le site est à la racine du domaine. Elle ne marche pas dans un sous-dossier, comme `exemple.github.io/site/`.
 
-Le domaine du site est défini dans `build.js`, variable `SITE_URL`. Il sert aux liens entre les langues pour Google. Remplacez-le par le vrai domaine avant la mise en ligne.
+L'adresse du site se règle dans l'outil d'administration, section Site. Elle sert aux liens entre les langues pour Google. Vérifiez-la avant la mise en ligne.

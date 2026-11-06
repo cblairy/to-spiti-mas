@@ -128,8 +128,26 @@
         }
 
         var today = new Date().toISOString().slice(0, 10);
-        arrival.min = today;
-        departure.min = today;
+        var opening = form.getAttribute("data-open") || "";
+        var closing = form.getAttribute("data-close") || "";
+        var firstDay = opening > today ? opening : today;
+        arrival.min = firstDay;
+        departure.min = firstDay;
+        if (closing) {
+            arrival.max = closing;
+            departure.max = closing;
+        }
+
+        function formatDay(isoDate) {
+            return new Intl.DateTimeFormat(document.documentElement.lang, { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })
+                .format(new Date(isoDate + "T00:00:00Z"));
+        }
+
+        function outsideSeason() {
+            if (!opening || !closing) return false;
+            return (arrival.value && (arrival.value < opening || arrival.value > closing))
+                || (departure.value && (departure.value < opening || departure.value > closing));
+        }
 
         function nightsBetween() {
             if (!arrival.value || !departure.value) return null;
@@ -146,7 +164,10 @@
 
             if (arrival.value) departure.min = arrival.value;
 
-            if (nights !== null && nights <= 0) {
+            if (outsideSeason()) {
+                message = text(summary, "closed").replace("{open}", formatDay(opening)).replace("{close}", formatDay(closing));
+                departure.setCustomValidity(message);
+            } else if (nights !== null && nights <= 0) {
                 message = text(summary, "order");
                 departure.setCustomValidity(message);
             } else if (nights !== null && minNights && nights < minNights) {

@@ -91,7 +91,7 @@
                 </li>
                 <li>
                     <h3>Επιβεβαιώνετε</h3>
-                    <p>Η καταβολή της προκαταβολής επιβεβαιώνει την κράτηση. <span class="todo">[Ποσό προκαταβολής και τρόπος πληρωμής]</span></p>
+                    <p>Η καταβολή προκαταβολής 30% επί της τιμής της διαμονής επιβεβαιώνει την κράτηση. Το υπόλοιπο εξοφλείται 30 ημέρες πριν από την άφιξη.</p>
                 </li>
             </ol>
 
@@ -101,11 +101,12 @@
     <section class="section section--sand" id="demande">
         <div class="wrap booking">
 
-            <form class="form" action="https://api.web3forms.com/submit" method="POST" data-booking-form data-min-nights="">
+            <form class="form" action="https://api.web3forms.com/submit" method="POST" data-booking-form data-min-nights="4" data-open="2027-04-15" data-close="2027-10-15">
 
                 <h2 class="field--full">Το αίτημά σας</h2>
+                <p class="field--full form-season">Το σπίτι ενοικιάζεται από 15 Απριλίου 2027 έως 15 Οκτωβρίου 2027.</p>
 
-                <input type="hidden" name="access_key" value="VOTRE_CLE_WEB3FORMS">
+                <input type="hidden" name="access_key" value="">
                 <input type="hidden" name="subject" value="Nouvelle demande de réservation, To Spiti Mas">
                 <input type="hidden" name="from_name" value="Site To Spiti Mas">
                 <input type="hidden" name="langue" value="el">
@@ -145,6 +146,8 @@
                    data-text-too-many="Έως 8 επισκέπτες"
                    data-text-min="Ελάχιστη διαμονή: {n} βράδια"
                    data-text-order="Η ημερομηνία αναχώρησης πρέπει να είναι μετά την ημερομηνία άφιξης"
+                   data-text-closed="Το σπίτι ενοικιάζεται από {open} έως {close}"
+                  
                   
                   
                   
@@ -236,23 +239,23 @@
                         <tr>
                             <th scope="row">Χαμηλή περίοδος</th>
                             <td>Απρίλιος, Μάιος και Οκτώβριος</td>
-                            <td><span class="todo">[… €]</span></td>
-                            <td><span class="todo">[… €]</span></td>
-                            <td><span class="todo">[… βράδια]</span></td>
+                            <td>290 €</td>
+                            <td>1.990 €</td>
+                            <td>4 βράδια</td>
                         </tr>
                         <tr>
                             <th scope="row">Μεσαία περίοδος</th>
                             <td>Ιούνιος και Σεπτέμβριος</td>
-                            <td><span class="todo">[… €]</span></td>
-                            <td><span class="todo">[… €]</span></td>
-                            <td><span class="todo">[… βράδια]</span></td>
+                            <td>400 €</td>
+                            <td>2.750 €</td>
+                            <td>4 βράδια</td>
                         </tr>
                         <tr>
                             <th scope="row">Υψηλή περίοδος</th>
                             <td>Ιούλιος και Αύγουστος</td>
-                            <td><span class="todo">[… €]</span></td>
-                            <td><span class="todo">[… €]</span></td>
-                            <td><span class="todo">[… βράδια]</span></td>
+                            <td>510 €</td>
+                            <td>3.690 €</td>
+                            <td>4 βράδια</td>
                         </tr>
                     </tbody>
                 </table>
@@ -275,8 +278,8 @@
                 <div class="info-block">
                     <h3>Άφιξη και αναχώρηση</h3>
                     <ul>
-                        <li><strong>Άφιξη</strong> από τις <span class="todo">[16:00]</span></li>
-                        <li><strong>Αναχώρηση</strong> έως τις <span class="todo">[10:00]</span></li>
+                        <li><strong>Άφιξη</strong> από τις 16:00</li>
+                        <li><strong>Αναχώρηση</strong> έως τις 10:00</li>
                         <li><strong>Κλειδιά</strong> αυτόνομη άφιξη με ασφαλή θυρίδα κλειδιών</li>
                         <li><strong>Αποσκευές</strong> <span class="todo">[δυνατότητα φύλαξης πριν από την άφιξη ή μετά την αναχώρηση;]</span></li>
                     </ul>
@@ -285,10 +288,10 @@
                 <div class="info-block">
                     <h3>Πληρωμή και ακύρωση</h3>
                     <ul>
-                        <li><strong>Προκαταβολή</strong> <span class="todo">[30 %]</span> με την κράτηση</li>
-                        <li><strong>Υπόλοιπο</strong> <span class="todo">[30 ημέρες]</span> πριν από την άφιξη</li>
-                        <li><strong>Εγγύηση</strong> <span class="todo">[ποσό, επιστρέφεται μέσα σε … ημέρες]</span></li>
-                        <li><strong>Ακύρωση</strong> <span class="todo">[όροι επιστροφής χρημάτων]</span></li>
+                        <li><strong>Προκαταβολή</strong> 30% με την κράτηση</li>
+                        <li><strong>Υπόλοιπο</strong> 30 ημέρες πριν από την άφιξη</li>
+                        <li><strong>Εγγύηση</strong> 500 €, επιστρέφεται εντός 7 ημερών</li>
+                        <li><strong>Ακύρωση</strong> δωρεάν έως 30 ημέρες πριν από την άφιξη</li>
                     </ul>
                 </div>
 
